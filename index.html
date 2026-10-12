@@ -4,20 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် - အလှူတော်မင်္ဂလာ နှိုးဆော်လွှာနှင့် အလှူရှင်မှတ်တမ်း</title>
-    <!-- Tailwind CSS Production CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Google Fonts (Myanmar & Serif) -->
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Noto+Sans+Myanmar:wght@400;600;700&display=swap" rel="stylesheet">
@@ -30,28 +18,132 @@
             --maroon: #4A0E17;
             --bg-color: #FDFBF7;
             --text-dark: #2C2A29;
+            --amber-900: #78350f;
+            --amber-950: #451a03;
+            --amber-800: #92400e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: 'Noto Sans Myanmar', 'Padauk', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
-            height: 6px;
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #d97706;
-            border-radius: 4px;
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 16px;
+            flex-grow: 1;
         }
 
-        /* Tab Active/Inactive Styles */
+        .top-line {
+            height: 8px;
+            background: linear-gradient(90deg, #78350f, #fbbf24, #78350f);
+            width: 100%;
+        }
+
+        header {
+            background-color: var(--amber-950);
+            color: #fef3c7;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(146, 64, 14, 0.5);
+        }
+
+        .banner-section {
+            background: linear-gradient(135deg, #78350f, #451a03);
+            color: white;
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 24px;
+        }
+
+        .banner-section img {
+            height: 64px;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        .banner-section h1 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fef3c7;
+            margin-bottom: 8px;
+        }
+
+        .divider {
+            height: 2px;
+            width: 100px;
+            background-color: rgba(251, 191, 36, 0.6);
+            margin: 8px auto;
+            border-radius: 2px;
+        }
+
+        .banner-section h2 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #fde68a;
+            padding: 0 8px;
+            margin-top: 8px;
+        }
+
+        .banner-section p {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fcd34d;
+            margin-top: 6px;
+        }
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto 24px auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 13px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #fcd34d;
+            background-color: #ffffff;
+            color: #78350f;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
         .tab-btn.active {
             background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
             color: #fef3c7;
@@ -59,726 +151,561 @@
             box-shadow: 0 4px 12px rgba(120, 53, 15, 0.25);
         }
 
-        .tab-btn {
-            background-color: #ffffff;
-            color: #78350f;
-            border: 1px solid #fcd34d;
-            transition: all 0.3s ease;
-        }
-
         .tab-btn:hover:not(.active) {
             background-color: #fef3c7;
         }
+
+        .tab-pane {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tab-pane.active {
+            display: flex;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #fcd34d;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .news-banner {
+            background: linear-gradient(135deg, #065f46, #022c22);
+            color: white;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            border: 2px solid #34d399;
+            box-shadow: 0 6px 15px rgba(6, 95, 70, 0.2);
+        }
+
+        .news-badge {
+            background-color: rgba(2, 44, 34, 0.8);
+            color: #a7f3d0;
+            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            border: 1px solid rgba(52, 211, 153, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ecfdf5;
+            margin-bottom: 6px;
+        }
+
+        .news-date {
+            font-size: 12px;
+            font-weight: 600;
+            color: #a7f3d0;
+            background-color: rgba(2, 44, 34, 0.5);
+            padding: 4px 10px;
+            border-radius: 8px;
+            display: inline-block;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .intro-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #b45309;
+            border-radius: 0 16px 16px 0;
+            padding: 16px;
+            border-top: 1px solid #fef3c7;
+            border-right: 1px solid #fef3c7;
+            border-bottom: 1px solid #fef3c7;
+            font-size: 13px;
+            text-align: justify;
+        }
+
+        .intro-subbox {
+            background-color: #fef3c7;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #fde68a;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .showcase-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid #fde68a;
+        }
+
+        .accordion-box {
+            background: white;
+            border: 1px solid #fcd34d;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .accordion-header {
+            background-color: #78350f;
+            color: #fef3c7;
+            padding: 12px 16px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-badge {
+            font-size: 11px;
+            background-color: #451a03;
+            color: #fef3c7;
+            padding: 2px 10px;
+            border-radius: 20px;
+            border: 1px solid #92400e;
+        }
+
+        details summary {
+            background-color: #fffbeb;
+            padding: 14px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .details-content {
+            padding: 16px;
+            background: white;
+            font-size: 13px;
+            line-height: 1.8;
+            text-align: justify;
+            border-top: 1px solid #fef3c7;
+        }
+
+        .inner-note {
+            background-color: #fffbeb;
+            border-left: 4px solid #78350f;
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0;
+            border-top: 1px solid #fef3c7;
+            border-right: 1px solid #fef3c7;
+            border-bottom: 1px solid #fef3c7;
+        }
+
+        .contact-card {
+            background: white;
+            border: 2px solid #fbbf24;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .contact-title {
+            text-align: center;
+            font-weight: bold;
+            color: #78350f;
+            font-size: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fef3c7;
+            margin-bottom: 12px;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e5e7eb;
+            font-size: 13px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .contact-row:last-child {
+            border-bottom: none;
+        }
+
+        .telegram-box {
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            margin-top: 12px;
+            transition: transform 0.2s;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        ol {
+            text-align: left;
+            max-width: 450px;
+            margin: 8px auto;
+            padding-left: 20px;
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .total-badge {
+            background: linear-gradient(135deg, #b45309, #78350f);
+            color: white;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(180, 83, 9, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+
+        .donor-card-mobile {
+            background: white;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #fde68a;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .donor-price-tag {
+            font-weight: bold;
+            color: #78350f;
+            font-size: 12px;
+            background-color: #fef3c7;
+            padding: 4px 12px;
+            border-radius: 8px;
+            border: 1px solid #fde68a;
+            align-self: flex-end;
+        }
+
+        .donor-table-wrapper {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #fde68a;
+            overflow-x: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #fffbeb;
+            color: #78350f;
+            padding: 14px;
+            border-bottom: 1px solid #fde68a;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #fef3c7;
+            color: #1f2937;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(254, 243, 199, 0.2);
+        }
+
+        footer {
+            background-color: var(--amber-950);
+            color: #fde68a;
+            text-align: center;
+            padding: 16px;
+            font-size: 12px;
+            border-top: 1px solid rgba(146, 64, 14, 0.6);
+            margin-top: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-donors { display: none !important; }
+            .desktop-donors { display: block !important; }
+        }
+        @media (max-width: 767px) {
+            .mobile-donors { display: block !important; }
+            .desktop-donors { display: none !important; }
+        }
     </style>
 </head>
-<body class="text-gray-800 min-h-screen flex flex-col justify-between selection:bg-amber-200 overflow-x-hidden">
+<body>
 
     <!-- Top Gold Decorative Line -->
-    <div class="h-2 bg-gradient-to-r from-amber-800 via-amber-400 to-amber-800 w-full"></div>
+    <div class="top-line"></div>
 
     <!-- Header Banner -->
-    <header class="bg-amber-950 text-amber-100 py-3 px-4 text-center shadow-md border-b border-amber-800/50">
-        <span class="flex items-center justify-center space-x-2 font-medium text-xs sm:text-sm text-amber-200">
-            <span>🙏</span>
-            <span>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် - Electric Golf Cart လျှပ်စစ်မော်တော်ယာဉ် လှူဒါန်းပွဲ</span>
-        </span>
+    <header>
+        <span>🙏 သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် - Electric Golf Cart လျှပ်စစ်မော်တော်ယာဉ် လှူဒါန်းပွဲ</span>
     </header>
 
     <!-- Main Content Container -->
-    <main class="max-w-4xl mx-auto w-full px-3 sm:px-6 py-4 sm:py-6 flex-grow space-y-6">
+    <main class="container">
 
-        <!-- Title Banner with Logo & Subtitle -->
-        <section class="bg-gradient-to-br from-amber-800 via-amber-900 to-amber-950 text-white rounded-2xl p-6 sm:p-8 text-center shadow-xl border border-amber-600/30 relative overflow-hidden flex flex-col items-center justify-center">
-            <div class="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none"></div>
-            
-            <!-- Logo Top Center -->
-            <div class="mb-3 relative z-10 flex justify-center w-full">
-                <img src="https://i.ibb.co/tM2DZwY3/snf-ygn-new-logo.png" alt="SNF YGN Logo" class="h-16 sm:h-20 w-auto max-w-[120px] sm:max-w-[160px] object-contain drop-shadow-md mx-auto block">
-            </div>
-
-            <!-- Banner Title -->
-            <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-100 mb-2 drop-shadow relative z-10 w-full text-center">
-                သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်
-            </h1>
-            
-            <div class="h-0.5 w-28 bg-amber-400/60 mx-auto my-2 rounded-full relative z-10"></div>
-            
-            <h2 class="text-xs sm:text-base md:text-lg font-medium text-amber-200 relative z-10 leading-relaxed px-2 text-center">
-                SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့် ယောဂီများ စုပေါင်းကောင်းမှု
-            </h2>
-            <p class="text-xs sm:text-sm font-semibold text-amber-300 relative z-10 mt-1 text-center">
-                နတ်လူသာဓု ခေါ်စေသော်
-            </p>
+        <!-- Title Banner -->
+        <section class="banner-section">
+            <img src="https://i.ibb.co/tM2DZwY3/snf-ygn-new-logo.png" alt="SNF YGN Logo">
+            <h1>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်</h1>
+            <div class="divider"></div>
+            <h2>SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့် ယောဂီများ စုပေါင်းကောင်းမှု</h2>
+            <p>နတ်လူသာဓု ခေါ်စေသော်</p>
         </section>
 
-        <!-- Navigation Tabs (ခလုပ်နှစ်ခု) -->
-        <section class="flex justify-center items-center gap-3 max-w-md mx-auto">
-            <button id="tabInvitationBtn" onclick="switchTab('invitation')" class="tab-btn active flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 cursor-pointer">
+        <!-- Navigation Tabs -->
+        <section class="tabs-container">
+            <button id="tabInvitationBtn" onclick="switchTab('invitation')" class="tab-btn active">
                 <span>📜</span>
                 <span>အလှူတော်မင်္ဂလာ နှိုးဆော်လွှာ</span>
             </button>
-            <button id="tabDonorsBtn" onclick="switchTab('donors')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-2 cursor-pointer">
+            <button id="tabDonorsBtn" onclick="switchTab('donors')" class="tab-btn">
                 <span>📊</span>
                 <span>အလှူရှင်စာရင်း (Board)</span>
             </button>
         </section>
 
-        <!-- TAB 1: INVITATION CONTENT (အလှူတော်မင်္ဂလာ နှိုးဆော်လွှာ) -->
-        <div id="invitationTabContent" class="space-y-6">
+        <!-- TAB 1: INVITATION CONTENT -->
+        <div id="invitationTabContent" class="tab-pane active">
 
-            <!-- Image Showcase Section -->
-            <section class="bg-white p-2 sm:p-3 rounded-2xl border border-amber-300 shadow-md">
-                <div class="rounded-xl overflow-hidden border-2 border-amber-200 shadow-inner">
-                    <img src="https://i.ibb.co/ZRFS8YvZ/aab415e9-c587-45b2-9a5b-57f140a48945.jpg" alt="သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် ဝန်းအတွင်း လျှပ်စစ် Golf Cart မော်တော်ယာဉ် လှူဒါန်းမှု" class="w-full h-auto object-cover hover:scale-[1.01] transition duration-300">
+            <!-- Image Showcase -->
+            <section class="card">
+                <div style="border-radius: 12px; overflow: hidden; border: 2px solid #fde68a;">
+                    <img src="https://i.ibb.co/ZRFS8YvZ/aab415e9-c587-45b2-9a5b-57f140a48945.jpg" alt="သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် ဝန်းအတွင်း လျှပ်စစ် Golf Cart မော်တော်ယာဉ် လှူဒါန်းမှု" class="showcase-img">
                 </div>
             </section>
 
-            <!-- First Transfer News Banner -->
-            <section class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-900 text-white rounded-2xl p-4 sm:p-5 text-center shadow-lg border-2 border-emerald-400 relative overflow-hidden">
-                <div class="flex flex-col items-center justify-center space-y-1.5">
-                    <span class="inline-block bg-emerald-950/80 text-emerald-200 text-[11px] sm:text-xs px-3 py-1 rounded-full font-semibold border border-emerald-500/50">
-                        🎉 သာသနာပြုလှူဒါန်းမှု သတင်းကောင်း
-                    </span>
-                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-emerald-100 leading-relaxed">
-                        သာသနာ့ပျိုးဥယျာဉ်ကျောင်းသို့ ပထမအကြိမ် ကျပ်သိန်းနှစ်ရာ (ကျပ် ၂၀,၀၀၀,၀၀၀) အား
-                    </h3>
-                    <p class="text-xs sm:text-sm font-semibold text-emerald-200 bg-emerald-950/40 px-3 py-1 rounded-lg border border-emerald-400/30 inline-block">
-                        9 October 2026 နေ့တွင် လွှဲပြောင်းလှူဒါန်းပြီးပါပြီ
-                    </p>
-                </div>
+            <!-- News Banner -->
+            <section class="news-banner">
+                <span class="news-badge">🎉 သာသနာပြုလှူဒါန်းမှု သတင်းကောင်း</span>
+                <h3 class="news-title">သာသနာ့ပျိုးဥယျာဉ်ကျောင်းသို့ ပထမအကြိမ် ကျပ်သိန်းနှစ်ရာ (ကျပ် ၂၀,၀၀၀,၀၀၀) အား</h3>
+                <div class="news-date">9 October 2026 နေ့တွင် လွှဲပြောင်းလှူဒါန်းပြီးပါပြီ</div>
             </section>
 
             <!-- Intro Description Box -->
-            <section class="bg-amber-50/90 border-l-4 border-amber-700 rounded-r-2xl p-4 sm:p-6 shadow-sm border-y border-r border-amber-200/80 space-y-3">
-                <p class="text-xs sm:text-base text-amber-950 leading-relaxed text-justify">
+            <section class="intro-box">
+                <p style="margin-bottom: 12px;">
                     ရန်ကုန်တိုင်းဒေသကြီး၊ လှည်းကူးမြို့နယ် <strong>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်</strong>၌ သီတင်းသုံးတော်မူကြသော သံဃာတော်များနှင့် သာမဏေများ ကျောင်းဝန်းအတွင်း၌ တနေရာမှ တနေရာသို့ လွယ်ကူ အဆင်ပြေစွာဖြင့် သက်တောင့်သက်သာ ကြွရောက် သွားလာနိုင်စေရန်အတွက် <strong>Electric Golf Cart (လျှပ်စစ် မော်တော်ယာဉ်)</strong> လှူဒါန်းနိုင်ရန် စီစဉ်လျက်ရှိပါသည်။
                 </p>
-                <div class="bg-amber-100/80 p-3.5 rounded-xl border border-amber-300 text-center">
-                    <h4 class="font-bold text-amber-900 text-sm mb-1">ဓမ္မမိတ်ဆွေများ ပါဝင်ကုသိုလ်ယူနိုင်ရန်</h4>
-                    <p class="text-xs sm:text-sm text-amber-950">
+                <div class="intro-subbox">
+                    <h4 style="font-weight: bold; color: #78350f; font-size: 13px; margin-bottom: 4px;">ဓမ္မမိတ်ဆွေများ ပါဝင်ကုသိုလ်ယူနိုင်ရန်</h4>
+                    <p style="font-size: 13px; color: #451a03;">
                         SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့်ယောဂီများ စုပေါင်းကောင်းမှုအလှူ အနေဖြင့် ကမ္ဗည်းထိုး လှူဒါန်းသွားပါမည်။ ကုသိုလ်ပါဝင် လှူဒါန်းနိုင်ကြပါကြောင်း ရိုသေစွာ အသိပေး နှိုးဆော်အပ်ပါသည်။
                     </p>
                 </div>
             </section>
 
-            <!-- Dhamma Desana Column/Board Style Section -->
-            <section class="bg-white rounded-2xl shadow-md border border-amber-300 overflow-hidden">
-                <div class="bg-amber-900 text-amber-100 px-4 sm:px-6 py-3.5 border-b border-amber-700 flex items-center justify-between">
-                    <h3 class="font-bold text-xs sm:text-base flex items-center space-x-2 text-amber-200">
-                        <span>📖</span>
-                        <span>ဟောကြားတော်မူသော တရားတော်များ</span>
-                    </h3>
-                    <span class="text-[10px] sm:text-xs font-semibold bg-amber-800 text-amber-200 px-2.5 py-1 rounded-full border border-amber-600">
-                        ၁ ပုဒ်
-                    </span>
+            <!-- Dhamma Desana Accordion Section -->
+            <section class="accordion-box">
+                <div class="accordion-header">
+                    <span style="display: flex; align-items: center; gap: 8px;">📖 ဟောကြားတော်မူသော တရားတော်များ</span>
+                    <span class="accordion-badge">၁ ပုဒ်</span>
                 </div>
-
-                <div class="p-3 sm:p-5 space-y-4 bg-amber-50/20">
-                    <div class="bg-white border border-amber-300 rounded-xl overflow-hidden shadow-sm hover:border-amber-400 transition">
-                        <details class="group">
-                            <summary class="bg-amber-50/90 p-3.5 sm:p-4 cursor-pointer flex justify-between items-center select-none hover:bg-amber-100/80 transition">
-                                <div class="space-y-1 pr-2">
-                                    <div class="text-[11px] sm:text-xs text-amber-800 font-semibold">
-                                        တိုက်ခွဲအမှတ် (၃၂) သဲအင်းဂူဝိပဿနာ ဓမ္မရိပ်သာ နှင့် သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် ၏ ဦးစီးပဓါန နာယက ဆရာတော်
-                                    </div>
-                                    <h4 class="font-bold text-amber-950 text-sm sm:text-base">
-                                        အသျှင်စန္ဒိမာ (အောင်လံ) — " လောက၌ အကောင်းဆုံး အမွန်မြတ်ဆုံး အလုပ်သုံးမျိုး တရားတော် "
-                                    </h4>
-                                    <p class="text-[10px] sm:text-xs text-gray-500">
-                                        (၇၄)နှစ်ပြည့်မွေးနေ့ (၁၃-၅-၂၀၂૬) တွင် ဟောကြားတော်မူသော
-                                    </p>
+                <div style="padding: 12px; background-color: #fffbeb;">
+                    <details style="background: white; border: 1px solid #fde68a; border-radius: 12px; overflow: hidden;">
+                        <summary style="padding: 14px; font-size: 13px;">
+                            <div>
+                                <div style="font-size: 11px; color: #92400e; font-weight: 600; margin-bottom: 2px;">
+                                    တိုက်ခွဲအမှတ် (၃၂) သဲအင်းဂူဝိပဿနာ ဓမ္မရိပ်သာ နှင့် သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် ၏ ဦးစီးပဓါန နာယက ဆရာတော်
                                 </div>
-                                <div class="bg-amber-200/80 p-2 rounded-lg text-amber-900 group-open:bg-amber-800 group-open:text-amber-100 transition shrink-0">
-                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 transform group-open:rotate-180 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </summary>
-
-                            <div class="p-4 sm:p-6 bg-white text-gray-800 space-y-3.5 text-xs sm:text-sm leading-relaxed border-t border-amber-200 text-justify">
-                                <p>
-                                    လူ့ဘဝရတဲ့ အချိန် ခဏလေးမှာ <span class="text-amber-800 font-bold">"အပ္ပမာဒေန ဘိက္ခဝေ သမ္ပာဒေထ"</span> — မမေ့မလျော့သော သတိဖြင့် နေရမည်လို့ မြတ်စွာဘုရားရှင်က ဟောထားပါတယ်။
+                                <h4 style="font-weight: bold; color: #451a03; font-size: 14px;">
+                                    အသျှင်စန္ဒိမာ (အောင်လံ) — " လောက၌ အကောင်းဆုံး အမွန်မြတ်ဆုံး အလုပ်သုံးမျိုး တရားတော် "
+                                </h4>
+                                <p style="font-size: 11px; color: #6b7280; margin-top: 2px;">
+                                    (၇၄)နှစ်ပြည့်မွေးနေ့ (၁၃-၅-၂၀၂၆) တွင် ဟောကြားတော်မူသော
                                 </p>
-
-                                <p>
-                                    အဲဒီအထဲမှာ <span class="text-amber-800 font-bold">"သဒ္ဓမ္မဿဝနံ အတိဒုလ္လဘံ"</span> — သူတော်ကောင်းတရားကို နာကြားရခြင်းသည် အလွန်ရနိုင်ခဲ၏။
-                                </p>
-
-                                <p>အဲဒီ ရနိုင်ခဲတဲ့ သူတော်ကောင်းအဆုံးအမကို မပြတ်ပွားများ အားထုတ်နေရမယ်။</p>
-
-                                <p>လူ့ဘဝဟာ ရခဲလှသည့်အတွက်ကြောင့် မပြုတ်ကျမီ ခဏတာကာလလေးမှာ အကောင်းဆုံး၊ အမွန်မြတ်ဆုံး၊ အထွဋ်အထိပ်ဆုံးဖြစ်တဲ့ အမြတ်ဆုံးအလုပ်ကို လုပ်ကြရပါမယ်။</p>
-
-                                <p>ဦးဇင်းက အကောင်းဆုံးအလုပ်ကိုမှ ကြိုက်တယ်။ တရားဟောပြီဆိုရင်လည်း လောကမှာ ဘာအကောင်းဆုံးလဲလို့ ရွေးတယ်။</p>
-
-                                <p class="font-semibold text-amber-900">ယောဂီတို့ မှတ်ထားရမှာက -</p>
-
-                                <div class="bg-amber-50/60 border-l-4 border-amber-800 p-3.5 rounded-r-lg space-y-2 border border-amber-200">
-                                    <div class="font-bold text-amber-900 text-xs sm:text-sm">နံပါတ် (၁) - မိမိကိုယ်တိုင် တရားအားထုတ်ခြင်းသည် အကောင်းဆုံးဖြစ်သည်။</div>
-                                    <p>အဲဒီထက်ကောင်းတာ လောကမှာ ဘာမှမရှိဘူး။ အသက်ကိုလှူ အဲလောက်မကောင်းဘူး။ ရွှေတိဂုံဘုရားလို စေတီကြီးတည် အဲလောက်မကောင်းဘူး။ ဘုံဗိမာန်ကြီးတွေ၊ ပြာသာဒ်ကြီးတွေ ကြိုက်သလောက်ဆောက်၊ ရွှေပြားတွေကပ် အဲလောက်မမြတ်ဘူး။</p>
-                                    <p>ကိုယ်တိုင်တရားအားထုတ်တာ အမြတ်ဆုံးပဲ။ အဲဒီထက် မြတ်တာ ဘာရှိသေးလဲ။ လောကမှာ ဘာအကောင်းဆုံးလဲလို့ ဦးဇင်း ဆင်ခြင်တယ်။ တစ်ခါတလေ တစ်ဝါတွင်းလုံး ကြာသွားတယ်။ ဘယ်လောက် လူ့ဘဝကြီးက တန်ဖိုးရှိလဲဆိုတာ ဆင်ခြင်တယ်။</p>
-                                </div>
-
-                                <div class="bg-amber-50/60 border-l-4 border-amber-800 p-3.5 rounded-r-lg space-y-2 border border-amber-200">
-                                    <div class="font-bold text-amber-900 text-xs sm:text-sm">နံပါတ် (၂) - တရားကျင့်ချင်သည့်၊ တရားအားထုတ်ချင်သည့် ပုဂ္ဂိုလ်ကို တရားအားထုတ်ဖို့ တိုက်တွန်းပြီး တရားပြသပေးခြင်းသည် နံပါတ်နှစ် အကောင်းဆုံးဖြစ်သည်။</div>
-                                    <p>သံသရာဘဝပေါင်း မြောက်မြားစွာ အို နာ သေ ဒုက္ခ၊ အသည်းနာ ခွဲခွာရမည့် လွမ်းခြင်း ဆွေးခြင်း ဒုက္ခ သောကပေါင်း မြောက်မြားစွာမှ လွတ်မြောက်အောင် မဲဆွယ်စည်းရုံးပြီး ကယ်တင်တာ၊ တရားပြတာ အကောင်းဆုံးပဲ။</p>
-                                    <p>အသက်ကိုလှူ၊ မျက်လုံးလှူ ကြိုက်တာလှူ အဲလောက်မကောင်းဘူး။ ရွှေတိဂုံလို စေတီတည် လှူတာလည်း တရားပြသည့် အလှူလောက် မကောင်းဘူး။</p>
-                                    <p><span class="text-amber-800 font-bold">"သဗ္ဗဒါနံ ဓမ္မဒါနံ ဇိနာတိ"</span> — တရားအလှူသည် အလှူအပေါင်းတို့ထက် မြတ်တယ်။ ဦးဇင်းက အကောင်းဆုံးကိုပဲ ရွေးချယ်လုပ်ပါတယ်။</p>
-                                </div>
-
-                                <div class="bg-amber-50/60 border-l-4 border-amber-800 p-3.5 rounded-r-lg space-y-2 border border-amber-200">
-                                    <div class="font-bold text-amber-900 text-xs sm:text-sm">နံပါတ် (၃) - ခုလို တရားပြ၊ တရားကျင့်ကြမည့် ပုဂ္ဂိုလ်များ တရားပြနိုင်၊ တရားကျင့်နိုင်အောင် ဓမ္မာရုံကြီးများ ဆောက်လုပ်ပေးခြင်း၊ ဝေယျာဝစ္စ စောင့်ရှောက်ပေးခြင်း၊ ရေ မီး လှူဒါန်းပေးခြင်းနှင့် ဆွမ်း အာဟာရ လှူဒါန်းပေးခြင်းတို့ ဖြစ်သည်။</div>
-                                    <p>သူတို့မရှိရင် တရားပြ၊ တရားကျင့်ချင်လို့ မရပါဘူး။ အဲဒါ အမြတ်ဆုံးပဲ။ ဦးဇင်းလည်း အဲဒီအလုပ်ပဲ လုပ်တယ်။</p>
-                                </div>
-
-                                <p>လူ့ဘဝမှာ နေရမှာချင်း အတူတူ၊ သေရမှာချင်း အတူတူ၊ အချိန်ဖြုန်းရမှာချင်း အတူတူ အမြတ်ဆုံး အလုပ်ကိုပဲ လုပ်ကြပါ။</p>
-
-                                <p class="font-semibold text-amber-900">အဲဒါကြောင့် ယောဂီတို့ကိုလည်း ဦးဇင်းက အမြတ်ဆုံး အလုပ်ကိုပဲ လုပ်စေချင်ပါတယ်။</p>
                             </div>
-                        </details>
-                    </div>
+                            <span style="background-color: #fef3c7; color: #78350f; padding: 6px 10px; border-radius: 8px; font-weight: bold; font-size: 12px;">▼</span>
+                        </summary>
+                        <div class="details-content">
+                            <p>လူ့ဘဝရတဲ့ အချိန် ခဏလေးမှာ <strong style="color: #92400e;">"အပ္ပမာဒေန ဘိက္ခဝေ သမ္ပာဒေထ"</strong> — မမေ့မလျော့သော သတိဖြင့် နေရမည်လို့ မြတ်စွာဘုရားရှင်က ဟောထားပါတယ်။</p>
+                            <p style="margin-top: 10px;">အဲဒီအထဲမှာ <strong style="color: #92400e;">"သဒ္ဓမ္မဿဝနံ အတိဒုလ္လဘံ"</strong> — သူတော်ကောင်းတရားကို နာကြားရခြင်းသည် အလွန်ရနိုင်ခဲ၏။</p>
+                            <p style="margin-top: 10px;">အဲဒီ ရနိုင်ခဲတဲ့ သူတော်ကောင်းအဆုံးအမကို မပြတ်ပွားများ အားထုတ်နေရမယ်။ လူ့ဘဝဟာ ရခဲလှသည့်အတွက်ကြောင့် မပြုတ်ကျမီ ခဏတာကာလလေးမှာ အကောင်းဆုံး၊ အမွန်မြတ်ဆုံး၊ အထွဋ်အထိပ်ဆုံးဖြစ်တဲ့ အမြတ်ဆုံးအလုပ်ကို လုပ်ကြရပါမယ်။</p>
+                            
+                            <div class="inner-note">
+                                <div style="font-weight: bold; color: #78350f; margin-bottom: 6px;">နံပါတ် (၁) - မိမိကိုယ်တိုင် တရားအားထုတ်ခြင်းသည် အကောင်းဆုံးဖြစ်သည်။</div>
+                                <p>အဲဒီထက်ကောင်းတာ လောကမှာ ဘာမှမရှိဘူး။ ကိုယ်တိုင်တရားအားထုတ်တာ အမြတ်ဆုံးပဲ။</p>
+                            </div>
+
+                            <div class="inner-note">
+                                <div style="font-weight: bold; color: #78350f; margin-bottom: 6px;">နံပါတ် (၂) - တရားပြသပေးခြင်းသည် နံပါတ်နှစ် အကောင်းဆုံးဖြစ်သည်။</div>
+                                <p><strong style="color: #92400e;">"သဗ္ဗဒါနံ ဓမ္မဒါနံ ဇိနာတိ"</strong> — တရားအလှူသည် အလှူအပေါင်းတို့ထက် မြတ်တယ်။</p>
+                            </div>
+
+                            <div class="inner-note">
+                                <div style="font-weight: bold; color: #78350f; margin-bottom: 6px;">နံပါတ် (၃) - ဓမ္မာရုံကြီးများ ဆောက်လုပ်ပေးခြင်းနှင့် လိုအပ်သည်များ လှူဒါန်းပေးခြင်း။</div>
+                                <p>သူတို့မရှိရင် တရားပြ၊ တရားကျင့်ချင်လို့ မရပါဘူး။ အဲဒါ အမြတ်ဆုံးပဲ။</p>
+                            </div>
+                            <p style="margin-top: 10px; font-weight: bold; color: #78350f; text-align: center;">🙏 သာဓု... သာဓု... သာဓု 🙏</p>
+                        </div>
+                    </details>
                 </div>
             </section>
 
-            <!-- Donation Contact Details Section -->
-            <section class="bg-white border-2 border-amber-400 rounded-2xl p-5 shadow-md space-y-4">
-                <h3 class="text-center font-bold text-amber-900 text-base sm:text-lg pb-2 border-b-2 border-amber-200">
-                    🤝 ဆက်သွယ်လှူဒါန်းနိုင်သည့် အချက်အလက်များ
-                </h3>
-                
-                <div class="max-w-md mx-auto space-y-2.5 text-xs sm:text-sm">
-                    <div class="flex justify-between items-center pb-2 border-b border-dashed border-gray-200">
-                        <strong class="text-amber-900">အလှူခံတာဝန်ခံ -</strong>
-                        <span class="font-semibold">[ ဒေါ်မြင့်ကေခိုင် ]</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-2 border-b border-dashed border-gray-200">
-                        <strong class="text-amber-900">ဆက်သွယ်ရန် ဖုန်း -</strong>
-                        <a href="tel:09799638057" class="font-bold text-amber-800 hover:underline">09799638057</a>
-                    </div>
-                    <div class="flex justify-between items-center pb-2 border-b border-dashed border-gray-200">
-                        <strong class="text-amber-900">KBZ Pay <span class="bg-blue-600 text-white text-[10px] px-1.5 py-0.5 rounded ml-1">KPay</span> -</strong>
-                        <span class="font-bold">09799638057</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <strong class="text-amber-900">Account အမည် -</strong>
-                        <span class="font-semibold">[ Myint Kay Khine ]</span>
-                    </div>
+            <!-- Donation Contact Details -->
+            <section class="contact-card">
+                <div class="contact-title">🤝 ဆက်သွယ်လှူဒါန်းနိုင်သည့် အချက်အလက်များ</div>
+                <div class="contact-row">
+                    <strong style="color: #78350f;">အလှူခံတာဝန်ခံ -</strong>
+                    <span>[ ဒေါ်မြင့်ကေခိုင် ]</span>
+                </div>
+                <div class="contact-row">
+                    <strong style="color: #78350f;">ဆက်သွယ်ရန် ဖုန်း -</strong>
+                    <a href="tel:09799638057" style="color: #92400e; font-weight: bold; text-decoration: none;">09799638057</a>
+                </div>
+                <div class="contact-row">
+                    <strong style="color: #78350f;">KBZ Pay <span style="background: #2563eb; color: white; font-size: 10px; padding: 2px 6px; border-radius: 4px;">KPay</span> -</strong>
+                    <span style="font-weight: bold;">09799638057</span>
+                </div>
+                <div class="contact-row">
+                    <strong style="color: #78350f;">Account အမည် -</strong>
+                    <span>[ Myint Kay Khine ]</span>
                 </div>
             </section>
 
-            <!-- Telegram Instruction & Button Section -->
-            <section class="bg-sky-50 border border-sky-200 rounded-2xl p-4 sm:p-6 text-center space-y-3 shadow-sm">
-                <h4 class="font-bold text-amber-950 text-sm sm:text-base">
-                    📌 အလှူငွေပေးပို့အတည်ပြုရန် လမ်းညွှန်ချက်
-                </h4>
-                
-                <ol class="text-left max-w-lg mx-auto text-xs sm:text-sm text-gray-700 space-y-1.5 list-decimal pl-5">
-                    <li>အထက်ပါ အကောင့်သို့ အလှူငွေ လွှဲပြောင်းပြီးပါက အောက်ပါ <strong>"Telegram Group သို့ ဝင်ရောက်ရန်"</strong> ခလုတ်ကို နှိပ်၍ Telegram Group သို့ ဝင်ရောက်ပေးပါ။</li>
-                    <li>Telegram Group တွင်းသို့ <strong>ငွေလွှဲပြောင်းမှု Screenshot</strong>၊ <strong>အလှူရှင် အမည်အပြည့်အစုံ</strong> နှင့် <strong>လှူဒါန်းငွေ ပမာဏ</strong> တို့ကို ပေးပို့ပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။</li>
+            <!-- Telegram Section -->
+            <section class="telegram-box">
+                <h4 style="font-weight: bold; color: #451a03; font-size: 14px; margin-bottom: 8px;">📌 အလှူငွေပေးပို့အတည်ပြုရန် လမ်းညွှန်ချက်</h4>
+                <ol>
+                    <li>အထက်ပါ အကောင့်သို့ အလှူငွေ လွှဲပြောင်းပြီးပါက အောက်ပါ <strong>"Telegram Group သို့ ဝင်ရောက်ရန်"</strong> ခလုတ်ကို နှိပ်ပါ။</li>
+                    <li>Telegram Group တွင်းသို့ <strong>ငွေလွှဲပြောင်းမှု Screenshot</strong>၊ <strong>အလှူရှင် အမည်</strong> နှင့် <strong>ပမာဏ</strong> ကို ပေးပို့ပါ။</li>
                 </ol>
-
-                <div class="pt-2">
-                    <a href="https://t.me/+c_y1JbTGeNI2ZWJl" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-sky-600 to-sky-700 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md hover:from-sky-700 hover:to-sky-800 transition duration-300 transform hover:-translate-y-0.5">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12C24 5.37 18.63 0 12 0zm5.56 8.16l-2.02 9.51c-.15.68-.56.84-1.13.53l-3.11-2.29-1.5 1.44c-.17.17-.31.31-.63.31l.22-3.17 5.77-5.21c.25-.22-.05-.34-.39-.12l-7.13 4.49-3.07-.96c-.67-.21-.68-.67.14-.99l12.01-4.63c.56-.21 1.05.13.84.89z"/>
-                        </svg>
-                        <span>Telegram Group သို့ ဝင်ရောက်ရန် နှိပ်ပါ</span>
-                    </a>
-                </div>
+                <a href="https://t.me/+c_y1JbTGeNI2ZWJl" target="_blank" class="telegram-btn">
+                    <span>💬 Telegram Group သို့ ဝင်ရောက်ရန် နှိပ်ပါ</span>
+                </a>
             </section>
 
         </div>
 
-        <!-- TAB 2: DONOR LIST CONTENT (အလှူရှင် ၂၉ ဦး စာရင်း) -->
-        <div id="donorsTabContent" class="space-y-6 hidden">
+        <!-- TAB 2: DONOR LIST CONTENT -->
+        <div id="donorsTabContent" class="tab-pane">
 
-            <!-- Intro Box for Donor List -->
-            <section class="bg-amber-50/80 border-l-4 border-amber-600 rounded-r-2xl p-4 sm:p-6 shadow-sm border-y border-r border-amber-200/60">
-                <p class="text-xs sm:text-base text-amber-950 leading-relaxed text-center font-medium">
+            <!-- Intro Box -->
+            <section class="intro-box" style="text-align: center;">
+                <p style="font-weight: 500; color: #451a03;">
                     ရန်ကုန်တိုင်းဒေသကြီး လှည်းကူးမြို့နယ် သာသနာ့ပျိုးဥယျာဉ်ကျောင်း အတွက် လျှပ်စစ်ယာဉ်ငယ် လှူဒါန်းနိုင်ရန် ကုသိုလ်ပါဝင် လှူဒါန်းထားကြသော 
-                    <span class="font-bold text-amber-800 bg-amber-100/80 px-1.5 py-0.5 rounded inline-block my-1">"အလှူရှင်များနှင့် အလှူငွေများအား"</span> 
-                    ဝမ်းမြောက်ဝမ်းသာ သာဓုအနုမောဒနာ ခေါ်ဆိုနိုင်ကြပါစေခြင်း အကျိုးငှာ ရိုသေစွာဖြင့် မှတ်တမ်းတင် ဂုဏ်ပြုအပ်ပါသည်
+                    <span style="font-weight: bold; color: #b45309; background: #fef3c7; padding: 2px 6px; border-radius: 4px;">"အလှူရှင်များနှင့် အလှူငွေများအား"</span> 
+                    ဝမ်းမြောက်ဝမ်းသာ သာဓုအနုမောဒနာ ခေါ်ဆိုနိုင်ကြပါစေကြောင်း ရိုသေစွာ မှတ်တမ်းတင် ဂုဏ်ပြုအပ်ပါသည်
                 </p>
             </section>
 
-            <!-- Total Donation Summary Badge -->
-            <section class="bg-gradient-to-r from-amber-700 via-amber-800 to-amber-900 text-white rounded-2xl p-4 sm:p-5 text-center shadow-lg border border-amber-500/40">
-                <span class="text-xs sm:text-sm font-medium tracking-wide text-amber-200 block uppercase mb-1">
-                    စုစုပေါင်း လှူဒါန်းရရှိငွေ
-                </span>
-                <div class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-wider">
-                    ၂၁,၉၅၀,၀၀၀ ကျပ်
-                </div>
+            <!-- Total Summary Badge -->
+            <section class="total-badge">
+                <span style="font-size: 12px; font-weight: 500; color: #fde68a; display: block; margin-bottom: 4px; text-transform: uppercase;">စုစုပေါင်း လှူဒါန်းရရှိငွေ</span>
+                <div style="font-size: 24px; font-weight: 800; letter-spacing: 1px;">၂၂,၀၀၀,၀၀၀ ကျပ်</div>
             </section>
 
-            <!-- Donor List Main Section -->
-            <section class="bg-white rounded-2xl shadow-md border border-amber-200 overflow-hidden">
-                <div class="bg-amber-100/80 px-4 sm:px-6 py-3.5 border-b border-amber-200 flex justify-between items-center">
-                    <h3 class="font-bold text-amber-950 text-xs sm:text-base flex items-center space-x-2">
-                        <span>📜</span>
-                        <span>လှူဒါန်းမှု စာရင်းများ</span>
-                    </h3>
-                    <span class="text-[10px] sm:text-xs font-semibold bg-amber-200 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300">
-                        ၂၉ ဦး
-                    </span>
+            <!-- Donor List Section -->
+            <section class="card" style="padding: 0; overflow: hidden;">
+                <div style="background-color: #fef3c7; padding: 14px 16px; border-bottom: 1px solid #fde68a; display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="font-weight: bold; color: #451a03; font-size: 14px;">📜 လှူဒါန်းမှု စာရင်းများ</h3>
+                    <span style="font-size: 11px; font-weight: bold; background: #fde68a; color: #78350f; padding: 4px 12px; border-radius: 20px;">၂၉ ဦး</span>
                 </div>
 
-                <!-- 1. Mobile View Cards (All 29 Donors) -->
-                <div class="block md:hidden p-3 space-y-3 bg-amber-50/30">
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">မိဘများအား အမှူးထား၍</span>
-                            ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၇,၀၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁,၀၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">ဒေါ်နီနီလွင် မိသားစု</div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင်<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု (ဖြူးမြို့)</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">နှစ်ဖက်မိဘများရည်စူး၍</span>
-                            တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">မိဘနှစ်ပါးအား အမှူးထား၍</span>
-                            ကိုဇော်လင်း + မအိအိလွင်<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သား မောင်ကောင်းခန့်၊ သမီး မယွန်းရွှေရည်လင်း မိသားစု</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">ဒေါ်တင်တင်လှိုင် အမှူးထား၍</span>
-                            ဒေါ်ခင်မာဦး (ခင်မေဦး အထည်ဆိုင်)<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">ကြည့်မြင်တိုင်ညဈေး မိသားစု</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍</span>
-                            ဒေါ်မို့မို့ မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍</span>
-                            မဧပရယ်ဌေး မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">ဒေါ်နုနုခိုင် မိသားစု</div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင်<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သမီး မအိဇာနည်ဖြိုး၊ သား မောင်အားသစ်ဇာနည် မိသားစု (နေပြည်တော်)</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၃၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">ဒေါ်သီသီလှိုင် မိသားစု</div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ကိုကျော်စွာ + မတင်တင်နွယ်<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သား မောင်သီဟကျော်စွာ၊ မောင်ဆန်းထွဋ်ကျော်စွာ၊ မောင်အုပ်စိုးကမ္ဘာ မိသားစု (နေပြည်တော်)</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၂၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သမီး မဖြူဖြူခိုင်မင်း၊ သား မောင်လရောင်လင်း မိသားစု</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">မချောစုလှိုင် မိသားစု</div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၂၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍</span>
-                            မကလျာဝင်း မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ( ဦးတင့်လွင် ) + ဒေါ်ဌေးဌေးဝင်း<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သမီး မသဲစုလွင်၊ သား မောင်ထွန်းအောင်ကျော် မိသားစု</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">မိဘများအား အမှူးထား၍</span>
-                            ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင်<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သမီး မပွင့်ကြည်ဖြူ၊ သား မောင်ဟိန်းပြည့်နိုင် မိသားစု</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၂၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">ဒေါ်ဆွေဆွေမြင့် မိသားစု</div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၃၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ကိုသန့်ဇော်လင်း + မဝေမာ<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">သား မောင်သက်ပိုင်လင်း၊ သမီး မစံယွန်းမေ မိသားစု</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍</span>
-                            သမီး မချို မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ကိုထွန်းဝေ + မမေလွင်သော်<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">ထွန်းပြည်လျှံ ဆောက်လုပ်ရေး ကုမ္ပဏီ မိသားစု</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">မိဘများအား ရည်စူး အမှူးထား၍</span>
-                            ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၆၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ဒေါ်ခင်ထွေးဇင် မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၅၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-xl border border-amber-200 shadow-sm flex flex-col space-y-2">
-                        <div class="font-bold text-gray-800 text-xs leading-relaxed">
-                            <span class="text-amber-700 font-semibold block mb-0.5">ကွယ်လွန်သူ မိဘများအား ရည်စူး၍</span>
-                            ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး<br>
-                            <span class="text-gray-600 font-normal text-[11px] block mt-0.5">မောင်ဉာဏ်ဝင်းထက် + သမီး မဖူးအိခိုင်၊ မယဉ်ယဉ်ထက်ဦး မိသားစု (ဟင်္သာတမြို့)</span>
-                        </div>
-                        <div class="flex justify-end">
-                            <span class="font-bold text-amber-900 text-xs bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
-                                ၁၀၀,၀၀၀ ကျပ်
-                            </span>
-                        </div>
-                    </div>
-
+                <!-- Mobile View Cards -->
+                <div class="mobile-donors" style="padding: 12px; background-color: #fffbeb;">
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">မိဘများအား အမှူးထား၍<br>ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု</div><div class="donor-price-tag">၁၇,၀၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ</div><div class="donor-price-tag">၁,၀၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်နီနီလွင် မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင်<br><span style="font-size: 11px; color: #6b7280; font-weight: normal;">သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု (ဖြူးမြို့)</span></div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">နှစ်ဖက်မိဘများရည်စူး၍<br>တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု</div><div class="donor-price-tag">၁၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">မိဘနှစ်ပါးအား အမှူးထား၍<br>ကိုဇော်လင်း + မအိအိလွင်<br><span style="font-size: 11px; color: #6b7280; font-weight: normal;">သား မောင်ကောင်းခန့်၊ သမီး မယွန်းရွှေရည်လင်း မိသားစု</span></div><div class="donor-price-tag">၅၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်တင်တင်လှိုင် အမှူးထား၍ ဒေါ်ခင်မာဦး (ခင်မေဦး အထည်ဆိုင်) ကြည့်မြင်တိုင်ညဈေး မိသားစု</div><div class="donor-price-tag">၅၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍ ဒေါ်မို့မို့ မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍ မဧပရယ်ဌေး မိသားစု</div><div class="donor-price-tag">၅၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်နုနုခိုင် မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင်<br><span style="font-size: 11px; color: #6b7280; font-weight: normal;">သမီး မအိဇာနည်ဖြိုး၊ သား မောင်အားသစ်ဇာနည် မိသားစု (နေပြည်တော်)</span></div><div class="donor-price-tag">၃၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်သီသီလှိုင် မိသားစု</div><div class="donor-price-tag">၅၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကိုကျော်စွာ + မတင်တင်နွယ်<br><span style="font-size: 11px; color: #6b7280; font-weight: normal;">သား မောင်သီဟကျော်စွာ၊ မောင်ဆန်းထွဋ်ကျော်စွာ မိသားစု (နေပြည်တော်)</span></div><div class="donor-price-tag">၂၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း မိသားစု</div><div class="donor-price-tag">၅၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">မချောစုလှိုင် မိသားစု</div><div class="donor-price-tag">၂၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍ မကလျာဝင်း မိသားစု</div><div class="donor-price-tag">၅၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">( ဦးတင့်လွင် ) + ဒေါ်ဌေးဌေးဝင်း မိသားစု</div><div class="donor-price-tag">၅၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">မိဘများအား အမှူးထား၍ ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင် မိသားစု</div><div class="donor-price-tag">၅၂၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်ဆွေဆွေမြင့် မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)</div><div class="donor-price-tag">၃၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကိုသန့်ဇော်လင်း + မဝေမာ မိသားစု <span style="color:#047857; font-size:11px;">(ထပ်တိုး)</span></div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍ သမီး မချို မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကိုထွန်းဝေ + မမေလွင်သော် (ထွန်းပြည်လျှံ ဆောက်လုပ်ရေး) မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">မိဘများအား ရည်စူး အမှူးထား၍ ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု</div><div class="donor-price-tag">၆၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်ခင်ထွေးဇင် မိသားစု</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု</div><div class="donor-price-tag">၅၀,၀၀၀ ကျပ်</div></div>
+                    <div class="donor-card-mobile"><div style="font-weight: bold; font-size: 13px;">ကွယ်လွန်သူ မိဘများအား ရည်စူး၍ ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး မိသားစု (ဟင်္သာတ)</div><div class="donor-price-tag">၁၀၀,၀၀၀ ကျပ်</div></div>
                 </div>
 
-                <!-- 2. Desktop View Table (All 29 Donors) -->
-                <div class="hidden md:block overflow-x-auto custom-scrollbar">
-                    <table class="w-full text-left border-collapse table-fixed">
+                <!-- Desktop View Table -->
+                <div class="desktop-donors donor-table-wrapper">
+                    <table>
                         <thead>
-                            <tr class="bg-amber-50/80 text-amber-900 text-sm border-b border-amber-200 font-bold">
-                                <th class="p-4 border-r border-amber-200/50 w-7/12">အလှူရှင်အမည်</th>
-                                <th class="p-4 text-right w-5/12">လှူဒါန်းငွေ (ကျပ်)</th>
+                            <tr>
+                                <th style="width: 70%;">အလှူရှင်အမည်</th>
+                                <th style="width: 30%; text-align: right;">လှူဒါန်းငွေ (ကျပ်)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-amber-100 text-sm">
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">မိဘများအား အမှူးထား၍ <br>ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၇,၀၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁,၀၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်နီနီလွင် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင် <br>သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု (ဖြူးမြို့)</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">နှစ်ဖက်မိဘများရည်စူး၍ <br>တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">မိဘနှစ်ပါးအား အမှူးထား၍ <br>ကိုဇော်လင်း + မအိအိလွင် <br>သား မောင်ကောင်းခန့်၊ သမီး မယွန်းရွှေရည်လင်း မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်တင်တင်လှိုင် အမှူးထား၍ ဒေါ်ခင်မာဦး <br>(ခင်မေဦး အထည်ဆိုင်) ကြည့်မြင်တိုင်ညဈေး မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍ <br>ဒေါ်မို့မို့ မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍ <br>မဧပရယ်ဌေး မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်နုနုခိုင် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင် <br>သမီး မအိဇာနည်ဖြိုး၊ သား မောင်အားသစ်ဇာနည် မိသားစု (နေပြည်တော်)</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၃၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်သီသီလှိုင် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကိုကျော်စွာ + မတင်တင်နွယ် <br>သား မောင်သီဟကျော်စွာ၊ မောင်ဆန်းထွဋ်ကျော်စွာ၊ မောင်အုပ်စိုးကမ္ဘာ မိသားစု (နေပြည်တော်)</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၂၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း <br>သမီး မဖြူဖြူခိုင်မင်း၊ သား မောင်လရောင်လင်း မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">မချောစုလှိုင် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၂၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍ <br>မကလျာဝင်း မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">( ဦးတင့်လွင် ) + ဒေါ်ဌေးဌေးဝင်း <br>သမီး မသဲစုလွင်၊ သား မောင်ထွန်းအောင်ကျော် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">မိဘများအား အမှူးထား၍ <br>ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင် <br>သမီး မပွင့်ကြည်ဖြူ၊ သား မောင်ဟိန်းပြည့်နိုင် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၂၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်ဆွေဆွေမြင့် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၃၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကိုသန့်ဇော်လင်း + မဝေမာ <br>သမီး မစံယွန်းမေ၊ သား မောင်သက်ပိုင်လင်း မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍ <br>သမီး မချို မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကိုထွန်းဝေ + မမေလွင်သော် <br>ထွန်းပြည်လျှံ ဆောက်လုပ်ရေး ကုမ္ပဏီ မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">မိဘများအား ရည်စူး အမှူးထား၍ <br>ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၆၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်ခင်ထွေးဇင် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-amber-50/20 hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၅၀,၀၀၀</td>
-                            </tr>
-                            <tr class="bg-white hover:bg-amber-50/40">
-                                <td class="p-4 border-r border-amber-100 font-medium text-gray-800">ကွယ်လွန်သူ မိဘများအား ရည်စူး၍ <br>ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး၊ မောင်ဉာဏ်ဝင်းထက် + သမီး မဖူးအိခိုင်၊ မယဉ်ယဉ်ထက်ဦး မိသားစု (ဟင်္သာတမြို့)</td>
-                                <td class="p-4 text-right font-bold text-amber-900">၁၀၀,၀၀၀</td>
-                            </tr>
+                        <tbody>
+                            <tr><td>မိဘများအား အမှူးထား၍ ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၇,၀၀၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁,၀၀၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်နီနီလွင် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင် သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု (ဖြူးမြို့)</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>နှစ်ဖက်မိဘများရည်စူး၍ တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀,၀၀၀</td></tr>
+                            <tr><td>မိဘနှစ်ပါးအား အမှူးထား၍ ကိုဇော်လင်း + မအိအိလွင် သား မောင်ကောင်းခန့် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်တင်တင်လှိုင် အမှူးထား၍ ဒေါ်ခင်မာဦး (ခင်မေဦး အထည်ဆိုင်) ကြည့်မြင်တိုင်ညဈေး မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀,၀၀၀</td></tr>
+                            <tr><td>ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍ ဒေါ်မို့မို့ မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍ မဧပရယ်ဌေး မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်နုနုခိုင် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင် သမီး မအိဇာနည်ဖြိုး မိသားစု (နေပြည်တော်)</td><td style="text-align: right; font-weight: bold; color: #78350f;">၃၀၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်သီသီလှိုင် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀,၀၀၀</td></tr>
+                            <tr><td>ကိုကျော်စွာ + မတင်တင်နွယ် သား မောင်သီဟကျော်စွာ မိသားစု (နေပြည်တော်)</td><td style="text-align: right; font-weight: bold; color: #78350f;">၂၀၀,၀၀၀</td></tr>
+                            <tr><td>ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀,၀၀၀</td></tr>
+                            <tr><td>မချောစုလှိုင် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၂၀,၀၀၀</td></tr>
+                            <tr><td>ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍ မကလျာဝင်း မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀,၀၀၀</td></tr>
+                            <tr><td>( ဦးတင့်လွင် ) + ဒေါ်ဌေးဌေးဝင်း မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀,၀၀၀</td></tr>
+                            <tr><td>မိဘများအား အမှူးထား၍ ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၂၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်ဆွေဆွေမြင့် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)</td><td style="text-align: right; font-weight: bold; color: #78350f;">၃၀၀,၀၀၀</td></tr>
+                            <tr><td>ကိုသန့်ဇော်လင်း + မဝေမာ မိသားစု <span style="color:#047857; font-size:11px;">(ထပ်တိုး ၅၀,၀၀၀ အပါ)</span></td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍ သမီး မချို မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ကိုထွန်းဝေ + မမေလွင်သော် (ထွန်းပြည်လျှံ ဆောက်လုပ်ရေး) မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>မိဘများအား ရည်စူး အမှူးထား၍ ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၆၀၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်ခင်ထွေးဇင် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
+                            <tr><td>ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု</td><td style="text-align: right; font-weight: bold; color: #78350f;">၅၀,၀၀၀</td></tr>
+                            <tr><td>ကွယ်လွန်သူ မိဘများအား ရည်စူး၍ ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး မိသားစု (ဟင်္သာတ)</td><td style="text-align: right; font-weight: bold; color: #78350f;">၁၀၀,၀၀၀</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -787,11 +714,11 @@
         </div>
 
         <!-- Blessing Closing -->
-        <section class="text-center py-2 space-y-2">
-            <p class="text-xs sm:text-sm text-gray-700 max-w-xl mx-auto leading-relaxed">
+        <section style="text-align: center; padding: 16px 0;">
+            <p style="font-size: 13px; color: #4b5563; max-width: 500px; margin: 0 auto; line-height: 1.6;">
                 ဤသို့ သဒ္ဓါထက်သန်စွာဖြင့် ပါဝင် လှူဒါန်းကြရသော အကျိုးအားကြောင့် အလှူရှင်နှင့်တကွ မိသားစုများသည် ကိုယ်ကျန်းမာ စိတ်ချမ်းသာ ဘေးအန္တရာယ် ကင်းရှင်းစွာဖြင့် သာသနာပြုနိုင်ကြပါစေ။
             </p>
-            <div class="text-lg sm:text-xl font-bold text-amber-900 tracking-widest">
+            <div style="font-size: 16px; font-weight: bold; color: #78350f; margin-top: 10px; letter-spacing: 2px;">
                 🙏 သာဓု... သာဓု... သာဓု 🙏
             </div>
         </section>
@@ -799,12 +726,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-amber-950 text-amber-200 text-center py-4 text-xs border-t border-amber-800/60 mt-6">
-        <p class="font-semibold">SNF YGN သာသနာပြုအဖွဲ့</p>
-        <p class="text-amber-400/80 text-[11px] mt-0.5">© 2026 | သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် လျှပ်စစ်ယာဉ်ငယ် အလှူတော်မှတ်တမ်း</p>
+    <footer>
+        <p style="font-weight: 600;">SNF YGN သာသနာပြုအဖွဲ့</p>
+        <p style="color: #fde68a; font-size: 11px; margin-top: 2px;">© 2026 | သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် လျှပ်စစ်ယာဉ်ငယ် အလှူတော်မှတ်တမ်း</p>
     </footer>
 
-    <!-- Tab Switch Logic Script -->
+    <!-- Tab Switch Script -->
     <script>
         function switchTab(tabName) {
             const invitationTab = document.getElementById('invitationTabContent');
@@ -813,13 +740,13 @@
             const donorsBtn = document.getElementById('tabDonorsBtn');
 
             if (tabName === 'invitation') {
-                invitationTab.classList.remove('hidden');
-                donorsTab.classList.add('hidden');
+                invitationTab.classList.add('active');
+                donorsTab.classList.remove('active');
                 invitationBtn.classList.add('active');
                 donorsBtn.classList.remove('active');
             } else {
-                invitationTab.classList.add('hidden');
-                donorsTab.classList.remove('hidden');
+                invitationTab.classList.remove('active');
+                donorsTab.classList.add('active');
                 invitationBtn.classList.remove('active');
                 donorsBtn.classList.add('active');
             }
