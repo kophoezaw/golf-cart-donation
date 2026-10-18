@@ -3,100 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် - လျှပ်စစ်မော်တော်ယာဉ် လှူဒါန်းမှု အလှူရှင်မှတ်တမ်း</title>
+    <title> သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် - ကျောင်းဝန်းတွင်းသုံး ယာဉ်ငယ်အလှူ </title>
     <style>
-        :root {
-            --primary-color: #b8860b;
-            --secondary-color: #d4af37;
-            --bg-color: #fcfbfa;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --border-color: #e6dfd5;
-        }
-
         body {
-            font-family: 'Pyidaungsu', 'Myanmar Text', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: sans-serif;
             margin: 0;
-            padding: 15px;
+            padding: 20px;
+            background-color: #f4f6f9;
+            color: #333;
             line-height: 1.6;
         }
-
         .container {
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            background: linear-gradient(135deg, #2c3e50, #4ca1af);
-            color: white;
-            padding: 20px 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 1.3rem;
-            margin: 0;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .tab-btn {
-            background-color: #e2dcd2;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: bold;
+            background: #ffffff;
+            padding: 30px;
             border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #555;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        .tab-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 8px rgba(184, 134, 11, 0.3);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .section-title {
+        h1 {
             text-align: center;
-            font-size: 1.15rem;
-            font-weight: bold;
             color: #d35400;
-            margin-bottom: 20px;
-            padding: 12px;
-            background-color: #fef9e7;
-            border: 1px solid #f39c12;
-            border-radius: 8px;
+            font-size: 1.5em;
+            margin-bottom: 5px;
         }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        .temple-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-top: 0;
+            font-weight: bold;
         }
-
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        .blessing {
+            text-align: center;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
         .highlight-box {
             background-color: #e8f8f5;
             border-left: 5px solid #27ae60;
@@ -105,7 +59,13 @@
             border-radius: 4px;
             text-align: center;
         }
-
+        .highlight-box h3 {
+            color: #27ae60;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        /* Drop-down Box (Details/Summary) Styling */
         details {
             background-color: #fef9e7;
             border: 1px solid #f39c12;
@@ -113,20 +73,109 @@
             margin: 20px 0;
             padding: 12px 15px;
         }
-
         summary {
             font-weight: bold;
             color: #d35400;
             cursor: pointer;
             font-size: 1.05em;
+            outline: none;
+            user-select: none;
         }
-
+        summary:hover {
+            color: #a04000;
+        }
         .dhamma-content {
             margin-top: 15px;
             border-top: 1px dashed #f39c12;
             padding-top: 15px;
             font-size: 0.95em;
-            text-align: justify;
+        }
+        .dhamma-content h4 {
+            color: #2c3e50;
+            margin: 10px 0 5px 0;
+            text-align: center;
+        }
+        .dhamma-content ul {
+            padding-left: 20px;
+        }
+        .dhamma-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Clean Table Styling */
+        .donation-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .donation-card h2 {
+            font-size: 1.25em;
+            color: #d35400;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .summary-banner {
+            background-color: #e8f8f5;
+            border: 1px solid #a3e4d7;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .summary-banner p {
+            margin: 3px 0;
+            text-align: center;
+            font-size: 1.05em;
+            color: #2c3e50;
+        }
+        .summary-banner strong {
+            color: #27ae60;
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: middle;
+            font-size: 0.95em;
+        }
+        th {
+            background-color: #d35400;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+        tr:hover {
+            background-color: #f5eeeb;
+        }
+        .amount {
+            text-align: right;
+            font-weight: bold;
+            color: #27ae60;
+            white-space: nowrap;
+        }
+        .total-row {
+            background-color: #fbeee6 !important;
+            font-weight: bold;
+        }
+        .total-row td {
+            color: #d35400;
+            font-size: 1em;
         }
 
         .contact-box {
@@ -136,14 +185,19 @@
             margin: 20px 0;
             border-radius: 6px;
         }
-        
         .contact-box h3 {
             color: #2980b9;
             margin-top: 0;
             border-bottom: 2px solid #eaeded;
             padding-bottom: 8px;
         }
-
+        .contact-box ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .contact-box li {
+            margin-bottom: 8px;
+        }
         .instruction-box {
             background-color: #f8f9f9;
             border-left: 5px solid #3498db;
@@ -151,7 +205,18 @@
             margin: 20px 0;
             border-radius: 4px;
         }
-
+        .instruction-box h3 {
+            color: #2980b9;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .instruction-box ol {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .instruction-box li {
+            margin-bottom: 6px;
+        }
         .btn-telegram {
             display: inline-block;
             background-color: #0088cc;
@@ -162,201 +227,148 @@
             font-weight: bold;
             margin-top: 10px;
         }
-
-        .donor-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .btn-telegram:hover {
+            background-color: #006699;
         }
-
-        .donor-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 12px 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .donor-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-        }
-
-        .donor-no {
-            background-color: var(--secondary-color);
-            color: white;
-            font-size: 0.85rem;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-weight: bold;
-            min-width: 25px;
+        .footer-blessing {
             text-align: center;
-        }
-
-        .donor-name {
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .donor-amount {
-            font-size: 0.95rem;
             font-weight: bold;
-            color: #27ae60;
-            white-space: nowrap;
-            background-color: #e8f8f5;
-            padding: 4px 10px;
-            border-radius: 6px;
+            color: #d35400;
+            margin-top: 30px;
+            font-size: 1.1em;
         }
-
-        .total-box {
-            background: linear-gradient(135deg, #d4af37, #b8860b);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.3em;
+            }
+            th, td {
+                padding: 8px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
+    <div class="container">
         <h1>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်</h1>
-        <p style="margin:5px 0 0 0; font-size: 0.95rem;">(SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့် ယောဂီများ စုပေါင်းကောင်းမှု)</p>
-    </header>
+        <p class="temple-title">ကျောင်းဝန်းတွင်းသုံး ယာဉ်ငယ်အလှူ </p>
+        <p class="subtitle">(SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့် ယောဂီများ စုပေါင်းကောင်းမှု)</p>
 
-    <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('notice')">အလှူတော်မင်္ဂလာ နှိုးဆော်လွှာ</button>
-        <button class="tab-btn" onclick="switchTab('donors')">အလှူရှင်စာရင်း မှတ်တမ်း</button>
-    </div>
+        <p class="blessing">✨ နတ်လူသာဓု ခေါ်စေသော်... ✨</p>
 
-    <!-- အလှူတော်မင်္ဂလာ Tab -->
-    <div id="notice" class="tab-content active">
-        <div class="card">
-            <h2 style="text-align: center; color: #d35400; margin-top: 0;">🙏 အလှူတော်မင်္ဂလာ နှိုးဆော်လွှာ</h2>
-            <p style="text-align: center; color: #27ae60; font-weight: bold;">✨ နတ်လူသာဓု ခေါ်စေသော်... ✨</p>
+        <p>ရန်ကုန်တိုင်းဒေသကြီး၊ လှည်းကူးမြို့နယ် <strong>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်</strong>၌ သီတင်းသုံးတော်မူကြသော သံဃာတော်များနှင့် သာမဏေများ ကျောင်းဝန်းအတွင်း၌ တနေရာမှ တနေရာသို့ လွယ်ကူ အဆင်ပြေစွာဖြင့် သက်တောင့်သက်သာ ကြွရောက် သွားလာနိုင်စေရန်အတွက် <strong>(မော်တော်ယာဉ်)</strong> လှူဒါန်း နိုင်ရန် စီစဉ်လျက်ရှိပါသည်။</p>
 
-            <p>ရန်ကုန်တိုင်းဒေသကြီး၊ လှည်းကူးမြို့နယ် <strong>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်</strong>၌ သီတင်းသုံးတော်မူကြသော သံဃာတော်များနှင့် သာမဏေများ ကျောင်းဝန်းအတွင်း၌ တနေရာမှ တနေရာသို့ လွယ်ကူ အဆင်ပြေစွာဖြင့် သက်တောင့်သက်သာ ကြွရောက် သွားလာနိုင်စေရန်အတွက် <strong>(လျှပ်စစ် မော်တော်ယာဉ်)</strong> လှူဒါန်းနိုင်ရန် စီစဉ်လျက်ရှိပါသည်။</p>
+        <p>ဓမ္မမိတ်ဆွေများ ကုသိုလ်ပါဝင် လှူဒါန်းနိုင်ကြရန်အတွက် "SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့် ယောဂီများ စုပေါင်းကောင်းမှုအလှူ" အနေဖြင့် ကမ္ဗည်းထိုး လှူဒါန်းသွားမည် ဖြစ်ပါသဖြင့် ကုသိုလ်ပါဝင် လှူဒါန်းနိုင်ကြပါကြောင်း ရိုသေစွာ အသိပေး နှိုးဆော်အပ်ပါသည်။</p>
 
-            <p>ဓမ္မမိတ်ဆွေများ ကုသိုလ်ပါဝင် လှူဒါန်းနိုင်ကြရန်အတွက် "SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့် ယောဂီများ စုပေါင်းကောင်းမှုအလှူ" အနေဖြင့် ကမ္ဗည်းထိုး လှူဒါန်းသွားပါမည် ဖြစ်ပါသဖြင့် ကုသိုလ်ပါဝင် လှူဒါန်းနိုင်ကြပါကြောင်း ရိုသေစွာ အသိပေး နှိုးဆော်အပ်ပါသည်။</p>
-
-            <div class="highlight-box">
-                <h3 style="color: #27ae60; margin-top: 0;">🎉 သာသနာပြုလှူဒါန်းမှု သတင်းကောင်း</h3>
-                <p style="margin: 0;">သာသနာ့ပျိုးဥယျာဉ်ကျောင်းသို့ ပထမအကြိမ် ကျပ်သိန်းနှစ်ရာ (ကျပ် ၂၀,၀၀၀,၀၀၀) အား 9 October 2026 နေ့တွင် မတည်လွှဲပြောင်း လှူဒါန်းပြီးပါပြီ။</p>
-            </div>
-
-            <details>
-                <summary>📜 "လောက၌ အကောင်းဆုံး အမွန်မြတ်ဆုံး အလုပ်သုံးမျိုး တရားတော်" (ဖတ်ရှုရန် နှိပ်ပါ)</summary>
-                <div class="dhamma-content">
-                    <p style="text-align: center;"><strong>တိုက်ခွဲအမှတ် (၃၂) သဲအင်းဂူဝိပဿနာ ဓမ္မရိပ်သာ နှင့် သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် ၏ ဦးစီးပဓါန နာယက ဆရာတော်</strong></p>
-                    <p style="text-align: center; color: #d35400; font-weight: bold;">အသျှင်စန္ဒိမာ (အောင်လံ)</p>
-                    <p style="text-align: center; font-size: 0.9em; color: #7f8c8d;">(၇၄)နှစ်ပြည့်မွေးနေ့ (၁၃- ၅ -၂ဝ၂၆) တွင် ဟောကြားတော်မူသော တရားတော်</p>
-                    <hr style="border: 0; height: 1px; background: #f39c12; margin: 15px 0;">
-                    
-                    <p>လူ့ဘဝရတဲ့ အချိန် ခဏလေးမှာ "အပ္ပမာဒေန ဘိက္ခဝေ သမ္ပာဒေထ" — မမေ့မလျော့သော သတိဖြင့် နေရမည်လို့ မြတ်စွာဘုရားရှင်က ဟောထားပါတယ်။</p>
-                    <p>အဲဒီအထဲမှာ "သဒ္ဓမ္မဿဝနံ အတိဒုလ္လဘံ" — သူတော်ကောင်းတရားကို နာကြားရခြင်းသည် အလွန်ရနိုင်ခဲ၏။ အဲဒီ ရနိုင်ခဲတဲ့ သူတော်ကောင်းအဆုံးအမကို မပြတ်ပွားများ အားထုတ်နေရမယ်။</p>
-                    <p>လူ့ဘဝဟာ ရခဲလှသည့်အတွက်ကြောင့် မပြုတ်ကျမီ ခဏတာကာလလေးမှာ အကောင်းဆုံး၊ အမွန်မြတ်ဆုံး၊ အထွဋ်အထိပ်ဆုံးဖြစ်တဲ့ အမြတ်ဆုံးအလုပ်ကို လုပ်ကြရပါမယ်။ ဦးဇင်းက အကောင်းဆုံးအလုပ်ကိုမှ ကြိုက်တယ်။ တရားဟောပြီဆိုရင်လည်း လောကမှာ ဘာအကောင်းဆုံးလဲလို့ ရွေးတယ်။</p>
-                    
-                    <p><strong>ယောဂီတို့ မှတ်ထားရမှာက -</strong></p>
-                    <ul>
-                        <li><strong>နံပါတ် (၁) - မိမိကိုယ်တိုင် တရားအားထုတ်ခြင်းသည် အကောင်းဆုံးဖြစ်သည်။</strong> အဲဒီထက်ကောင်းတာ လောကမှာ ဘာမှမရှိဘူး။ အသက်ကိုလှူ အဲလောက်မကောင်းဘူး။ ရွှေတိဂုံဘုရားလို စေတီကြီးတည် အဲလောက်မကောင်းဘူး။ ဘုံဗိမာန်ကြီးတွေ၊ ပြာသာဒ်ကြီးတွေ ကြိုက်သလောက်ဆောက်၊ ရွှေပြားတွေကပ် အဲလောက်မမြတ်ဘူး။ ကိုယ်တိုင်တရားအားထုတ်တာ အမြတ်ဆုံးပဲ။ အဲဒီထက် မြတ်တာ ဘာရှိသေးလဲ။ လောကမှာ ဘာအကောင်းဆုံးလဲလို့ ဦးဇင်း ဆင်ခြင်တယ်။ တစ်ခါတလေ တစ်ဝါတွင်းလုံး ကြာသွားတယ်။ ဘယ်လောက် လူ့ဘဝကြီးက တန်ဖိုးရှိလဲဆိုတာ ဆင်ခြင်တယ်။</li>
-                        <li><strong>နံပါတ် (၂) - တရားကျင့်ချင်သည့်၊ တရားအားထုတ်ချင်သည့် ပုဂ္ဂိုလ်ကို တရားအားထုတ်ဖို့ တိုက်တွန်းပြီး တရားပြသပေးခြင်းသည် နံပါတ်နှစ် အကောင်းဆုံးဖြစ်သည်။</strong> သံသရာဘဝပေါင်း မြောက်မြားစွာ အို နာ သေ ဒုက္ခ၊ အသည်းနာ ခွဲခွာရမည့် လွမ်းခြင်း ဆွေးခြင်း ဒုက္ခ သောကပေါင်း မြောက်မြားစွာမှ လွတ်မြောက်အောင် မဲဆွယ်စည်းရုံးပြီး ကယ်တင်တာ၊ တရားပြတာ အကောင်းဆုံးပဲ။ အသက်ကိုလှူ၊ မျက်လုံးလှူ ကြိုက်တာလှူ အဲလောက်မကောင်းဘူး။ ရွှေတိဂုံလို စေတီတည် လှူတာလည်း တရားပြသည့် အလှူလောက် မကောင်းဘူး။ "သဗ္ဗဒါနံ ဓမ္မဒါနံ ဇိနာတိ" — တရားအလှူသည် အလှူအပေါင်းတို့ထက် မြတ်တယ်။ ဦးဇင်းက အကောင်းဆုံးကိုပဲ ရွေးချယ်လုပ်ပါတယ်။</li>
-                        <li><strong>နံပါတ် (၃) - ခုလို တရားပြ၊ တရားကျင့်ကြမည့် ပုဂ္ဂိုလ်များ တရားပြနိုင်၊ တရားကျင့်နိုင်အောင် ဓမ္မာရုံကြီးများ ဆောက်လုပ်ပေးခြင်း၊ ဝေယျာဝစ္စ စောင့်ရှောက်ပေးခြင်း၊ ရေ မီး လှူဒါန်းပေးခြင်းနှင့် ဆွမ်း အာဟာရ လှူဒါန်းပေးခြင်းတို့ ဖြစ်သည်။</strong> သူတို့မရှိရင် တရားပြ၊ တရားကျင့်ချင်လို့ မရပါဘူး။ အဲဒါ အမြတ်ဆုံးပဲ။ ဦးဇင်းလည်း အဲဒီအလုပ်ပဲ လုပ်တယ်။</li>
-                    </ul>
-
-                    <p>လူ့ဘဝမှာ နေရမှာချင်း အတူတူ၊ သေရမှာချင်း အတူတူ၊ အချိန်ဖြုန်းရမှာချင်း အတူတူ အမြတ်ဆုံး အလုပ်ကိုပဲ လုပ်ကြပါ။ အဲဒါကြောင့် ယောဂီတို့ကိုလည်း ဦးဇင်းက အမြတ်ဆုံး အလုပ်ကိုပဲ လုပ်စေချင်ပါတယ်။</p>
-                </div>
-            </details>
-
-            <div class="contact-box">
-                <h3>🤝 ဆက်သွယ်လှူဒါန်းနိုင်သည့် အချက်အလက်များ</h3>
-                <p style="margin:5px 0;"><strong>အလှူခံတာဝန်ခံ -</strong> ဒေါ်မြင့်ကေခိုင်</p>
-                <p style="margin:5px 0;"><strong>ဆက်သွယ်ရန် ဖုန်း -</strong> 09799638057</p>
-                <p style="margin:5px 0;"><strong>KBZ Pay -</strong> 09799638057</p>
-                <p style="margin:5px 0;"><strong>Account အမည် -</strong> Myint Kay Khine</p>
-            </div>
-
-            <div class="instruction-box">
-                <h3 style="color: #2980b9; margin-top: 0;">📌 အလှူငွေ ပေးပို့အတည်ပြုရန် လမ်းညွှန်ချက်</h3>
-                <ol style="padding-left: 20px; margin: 0;">
-                    <li>အထက်ပါ အကောင့်သို့ အလှူငွေ လွှဲပြောင်းပြီးပါက Telegram Group သို့ ဝင်ရောက်ပေးပါ။</li>
-                    <li>Telegram Group တွင်းသို့ ငွေလွှဲပြောင်းမှု Screenshot၊ အလှူရှင် အမည်အပြည့်အစုံ နှင့် လှူဒါန်းငွေ ပမာဏ တို့ကို ပေးပို့ပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။</li>
-                </ol>
-                <div style="text-align: center; margin-top: 15px;">
-                    <a href="https://t.me/+c_y1JbTGeNI2ZWJl" target="_blank" class="btn-telegram">💬 Telegram Group သို့ ဝင်ရန်</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- အလှူရှင်စာရင်း Tab -->
-    <div id="donors" class="tab-content">
-        <div class="section-title">📋 လျှပ်စစ်မော်တော်ယာဉ် လှူဒါန်းမှု အလှူရှင်မှတ်တမ်း</div>
-        
         <div class="highlight-box">
-            <p style="margin:0;">စုစုပေါင်း လှူဒါန်းရရှိငွေ - <strong>၂၂,၁၄၅,၀၀၀ ကျပ်</strong> (အလှူရှင် စုစုပေါင်း - <strong>၃၃ ဦး</strong>)</p>
+            <h3>🎉 သာသနာပြုလှူဒါန်းမှု သတင်းကောင်း</h3>
+            <p style="margin: 0; text-align: center;">သာသနာ့ပျိုးဥယျာဉ်ကျောင်းသို့ ပထမအကြိမ် အလှူငွေ ကျပ်သိန်းနှစ်ရာ (ကျပ် ၂၀,၀၀၀,၀၀၀) အား  ( 9 October 2026 ) နေ့တွင် လွှဲပြောင်း လှူဒါန်းပြီးပါပြီ။ ( 26 October 2026 ) တွင် 
+ကျန်ရှိသော အလှူငွေများ အပြီး လွှဲအပ် လှူဒါန်းမည် ဖြစ်ပါသည်  </p>
         </div>
 
-        <div class="donor-list">
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁</span><span class="donor-name">မိဘများအား အမှူးထား၍ ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု</span></div><div class="donor-amount">၁၇,၀၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂</span><span class="donor-name">ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ</span></div><div class="donor-amount">၁,၀၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၃</span><span class="donor-name">ဒေါ်နီနီလွင် မိသားစု</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၄</span><span class="donor-name">ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင် (သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု၊ ဖြူးမြို့)</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၅</span><span class="donor-name">နှစ်ဖက်မိဘများရည်စူး၍ တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု</span></div><div class="donor-amount">၁၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၆</span><span class="donor-name">မိဘနှစ်ပါးအား အမှူးထား၍ ကိုဇော်လင်း + မအိအိလွင် (သား မောင်ကောင်းခန့်၊ သမီး မယွန်းရွှေရည်လင်း မိသားစု)</span></div><div class="donor-amount">၅၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၇</span><span class="donor-name">ဒေါ်တင်တင်လှိုင် အမှူးထား၍ ဒေါ်ခင်မာဦး (ခင်မေဦး အထည်ဆိုင်၊ ကြည့်မြင်တိုင်ညဈေး မိသားစု)</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၈</span><span class="donor-name">ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၉</span><span class="donor-name">မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍ ဒေါ်မို့မို့ မိသားစု</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၀</span><span class="donor-name">ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍ မဧပရယ်ဌေး မိသားစု</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၁</span><span class="donor-name">ဒေါ်နုနုခိုင် မိသားစု</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၂</span><span class="donor-name">ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၃</span><span class="donor-name">ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင် (သမီး မအိဇာနည်ဖြိုး၊ သား မောင်အားသစ်ဇာနည် မိသားစု၊ နေပြည်တော်)</span></div><div class="donor-amount">၃၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၄</span><span class="donor-name">ဒေါ်သီသီလှိုင် မိသားစု</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၅</span><span class="donor-name">ကိုကျော်စွာ + မတင်တင်နွယ် (သား မောင်သီဟကျော်စွာ၊ မောင်ဆန်းထွဋ်ကျော်စွာ၊ မောင်အုပ်စိုးကမ္ဘာ မိသားစု၊ နေပြည်တော်)</span></div><div class="donor-amount">၂၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၆</span><span class="donor-name">ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း (သမီး မဖြူဖြူခိုင်မင်း၊ သား မောင်လရောင်လင်း မိသားစု)</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၇</span><span class="donor-name">မချောစုလှိုင် မိသားစု</span></div><div class="donor-amount">၂၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၈</span><span class="donor-name">ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍ မကလျာဝင်း မိသားစု</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၁၉</span><span class="donor-name">(ဦးတင့်လွင်) + ဒေါ်ဌေးဌေးဝင်း (သမီး မသဲစုလွင်၊ သား မောင်ထွန်းအောင်ကျော် မိသားစု)</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၀</span><span class="donor-name">မိဘများအား အမှူးထား၍ ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင် (သမီး မပွင့်ကြည်ဖြူ၊ သား မောင်ဟိန်းပြည့်နိုင် မိသားစု)</span></div><div class="donor-amount">၅၂၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၁</span><span class="donor-name">ဒေါ်ဆွေဆွေမြင့် မိသားစု</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၂</span><span class="donor-name">ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)</span></div><div class="donor-amount">၃၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၃</span><span class="donor-name">ကိုသန့်ဇော်လင်း + မဝေမာ (သား မောင်သက်ပိုင်လင်း၊ သမီး မစံယွန်းမေ မိသားစု)</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၄</span><span class="donor-name">ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍ သမီး မချို မိသားစု</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၅</span><span class="donor-name">ကိုထွန်းဝေ + မမေလွင်သော် (ထွန်းပြည်လျှံ ဆောက်လုပ်ရေး ကုမ္ပဏီ မိသားစု)</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၆</span><span class="donor-name">မိဘများအား ရည်စူး အမှူးထား၍ ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု</span></div><div class="donor-amount">၆၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၇</span><span class="donor-name">ဒေါ်ခင်ထွေးဇင် မိသားစု</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၈</span><span class="donor-name">ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၂၉</span><span class="donor-name">ကွယ်လွန်သူ မိဘများအား ရည်စူး၍ ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး မိသားစု (ဟင်္သာတမြို့)</span></div><div class="donor-amount">၁၀၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၃၀</span><span class="donor-name">ကိုအောင်သူရကျော် + မသက်သက်ဇင်မြင့် မိသားစု (ရန်ကုန်မြို့)</span></div><div class="donor-amount">၅၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၃၁</span><span class="donor-name">ဦးဝင်းမောင် + ဒေါ်ခင်အေး မိသားစု (ပျဉ်းမနားမြို့)</span></div><div class="donor-amount">၆၀,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၃၂</span><span class="donor-name">ဦးညွန့်ဝင်း + ဒေါ်ရီ မိသားစု (ပျဉ်းမနားမြို့)</span></div><div class="donor-amount">၁၅,၀၀၀</div></div>
-            <div class="donor-card"><div class="donor-info"><span class="donor-no">၃၃</span><span class="donor-name">မကြည်ကြည်ဦး မိသားစု</span></div><div class="donor-amount">၂၀,၀၀၀</div></div>
-        </div>
-
-        <div class="total-box">စုစုပေါင်း လှူဒါန်းရရှိငွေ - ၂၂,၁၄၅,၀၀၀ ကျပ်</div>
-    </div>
-
-</div>
-
-<script>
-    function switchTab(tabId) {
-        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
         
-        document.getElementById(tabId).classList.add('active');
-        event.currentTarget.classList.add('active');
-    }
-</script>
+
+        <!-- သန့်ရှင်းလှပသော အလှူရှင်မှတ်တမ်း ဇယား -->
+        <div class="donation-card">
+            <h2>အလှူရှင်မှတ်တမ်း</h2>
+
+            <div class="summary-banner">
+                <p>စုစုပေါင်း လှူဒါန်းရရှိငွေ - <strong>၂၂,၁၄၅,၀၀၀ ကျပ်</strong></p>
+                <p>အလှူရှင် စုစုပေါင်း - <strong>၃၃ ဦး</strong></p>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 10%; text-align: center;">စဉ်</th>
+                            <th style="width: 60%;">အလှူရှင်အမည် / မိသားစု</th>
+                            <th style="width: 30%; text-align: right;">လှူဒါန်းငွေ (ကျပ်)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: center;">၁</td><td>မိဘများအား အမှူးထား၍ ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု</td><td class="amount">၁၇,၀၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂</td><td>ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ</td><td class="amount">၁,၀၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၃</td><td>ဒေါ်နီနီလွင် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၄</td><td>ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင် (သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု၊ ဖြူးမြို့)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၅</td><td>နှစ်ဖက်မိဘများရည်စူး၍ တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု</td><td class="amount">၁၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၆</td><td>မိဘနှစ်ပါးအား အမှူးထား၍ ကိုဇော်လင်း + မအိအိလွင် (သား မောင်ကောင်းခန့်၊ သမီး မယွန်းရွှေရည်လင်း မိသားစု)</td><td class="amount">၅၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၇</td><td>ဒေါ်တင်တင်လှိုင် အမှူးထား၍ ဒေါ်ခင်မာဦး (ခင်မေဦး အထည်ဆိုင်၊ ကြည့်မြင်တိုင်ညဈေး မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၈</td><td>ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၉</td><td>မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍ ဒေါ်မို့မို့ မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၀</td><td>ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍ မဧပရယ်ဌေး မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၁</td><td>ဒေါ်နုနုခိုင် သမီး မကျော့ မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၂</td><td>ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၃</td><td>ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင် (သမီး မအိဇာနည်ဖြိုး၊ သား မောင်အားသစ်ဇာနည် မိသားစု၊ နေပြည်တော်)</td><td class="amount">၃၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၄</td><td>ဒေါ်သီသီလှိုင် မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၅</td><td>ကိုကျော်စွာ + မတင်တင်နွယ် (သား မောင်သီဟကျော်စွာ၊ မောင်ဆန်းထွဋ်ကျော်စွာ၊ မောင်အုပ်စိုးကမ္ဘာ မိသားစု၊ နေပြည်တော်)</td><td class="amount">၂၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၆</td><td>ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း (သမီး မဖြူဖြူခိုင်မင်း၊ သား မောင်လရောင်လင်း မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၇</td><td>မချောစုလှိုင် မိသားစု</td><td class="amount">၂၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၈</td><td>ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍ မကလျာဝင်း မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၁၉</td><td>(ဦးတင့်လွင်) + ဒေါ်ဌေးဌေးဝင်း (သမီး မသဲစုလွင်၊ သား မောင်ထွန်းအောင်ကျော် မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၀</td><td>မိဘများအား အမှူးထား၍ ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင် (သမီး မပွင့်ကြည်ဖြူ၊ သား မောင်ဟိန်းပြည့်နိုင် မိသားစု)</td><td class="amount">၅၂၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၁</td><td>ဒေါ်ဆွေဆွေမြင့် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၂</td><td>ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)</td><td class="amount">၃၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၃</td><td>ကိုသန့်ဇော်လင်း + မဝေမာ (သား မောင်သက်ပိုင်လင်း၊ သမီး မစံယွန်းမေ မိသားစု)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၄</td><td>ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍ သမီး မချို မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၅</td><td>ကိုထွန်းဝေ + မမေလွင်သော် (ထွန်းပြည့်လျှံ ဆောက်လုပ်ရေး ကုမ္ပဏီ မိသားစု)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၆</td><td>မိဘများအား ရည်စူး အမှူးထား၍ ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု</td><td class="amount">၆၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၇</td><td>ဒေါ်ခင်ထွေးဇင် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၈</td><td>ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၂၉</td><td>ကွယ်လွန်သူ မိဘများအား ရည်စူး၍ ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး မိသားစု (ဟင်္သာတမြို့)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၃၀</td><td>ကိုအောင်သူရကျော် + မသက်သက်ဇင်မြင့် မိသားစု (ရန်ကုန်မြို့)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၃၁</td><td>ဦးဝင်းမောင် + ဒေါ်ခင်အေး မိသားစု (ပျဉ်းမနားမြို့)</td><td class="amount">၆၀,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၃၂</td><td>ဦးညွန့်ဝင်း + ဒေါ်ရီ မိသားစု (ပျဉ်းမနားမြို့)</td><td class="amount">၁၅,၀၀၀</td></tr>
+                        <tr><td style="text-align: center;">၃၃</td><td>မကြည်ကြည်ဦး မိသားစု</td><td class="amount">၂၀,၀၀၀</td></tr>
+                        <tr class="total-row">
+                            <td colspan="2" style="text-align: right;">စုစုပေါင်း လှူဒါန်းရရှိငွေ</td>
+                            <td class="amount" style="text-align: right;">၂၂,၁၄၅,၀၀၀</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h3>🤝 ဆက်သွယ်လှူဒါန်းနိုင်သည့် အချက်အလက်များ</h3>
+            <ul>
+                <li><strong>အလှူခံတာဝန်ခံ -</strong> ဒေါ်မြင့်ကေခိုင်</li>
+                <li><strong>ဆက်သွယ်ရန် ဖုန်း -</strong> 09799638057</li>
+                <li><strong>KBZ Pay -</strong> 09799638057</li>
+                <li><strong>Account အမည် -</strong> Myint Kay Khine</li>
+            </ul>
+        </div>
+
+        <div class="instruction-box">
+            <h3>📌 အလှူငွေ ပေးပို့အတည်ပြုရန် လမ်းညွှန်ချက်</h3>
+            <ol>
+                <li>အထက်ပါ အကောင့်သို့ အလှူငွေ လွှဲပြောင်းပြီးပါက Telegram Group သို့ ဝင်ရောက်ပေးပါ။</li>
+                <li>Telegram Group တွင်းသို့ ငွေလွှဲပြောင်းမှု Screenshot၊ အလှူရှင် အမည်အပြည့်အစုံ နှင့် လှူဒါန်းငွေ ပမာဏ တို့ကို ပေးပို့ပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။</li>
+            </ol>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="https://t.me/+c_y1JbTGeNI2ZWJl" target="_blank" class="btn-telegram">💬 Telegram Group သို့ ဝင်ရန်</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <p style="text-align: center; font-style: italic;">ဤသို့ သဒ္ဓါထက်သန်စွာဖြင့် ပါဝင် လှူဒါန်းကြရသော အကျိုးအားကြောင့် အလှူရှင်နှင့်တကွ မိသားစုများသည် ကိုယ်ကျန်းမာ စိတ်ချမ်းသာ ဘေးအန္တရာယ် ကင်းရှင်းစွာဖြင့် သာသနာပြုနိုင်ကြပါစေ။</p>
+
+        <p class="footer-blessing">🙏 သာဓု... သာဓု... သာဓု 🙏</p>
+    </div>
 
 </body>
 </html>
