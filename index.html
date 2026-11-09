@@ -65,32 +65,33 @@
             margin-bottom: 10px;
         }
         
-        /* Photo Gallery Styling */
+        /* Certificate Photo Gallery Styling (တပုံချင်းစီ အပြည့်အစုံပေါ်ရန်) */
         .photo-gallery {
             margin: 25px 0;
             text-align: center;
         }
         .photo-gallery h3 {
             color: #d35400;
-            margin-bottom: 15px;
-            font-size: 1.15em;
+            margin-bottom: 20px;
+            font-size: 1.2em;
         }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+        .cert-container {
+            background: #fdfefe;
+            border: 1px solid #d5d8dc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
-        .gallery-grid img {
+        .cert-container img {
             width: 100%;
-            height: 180px;
-            object-fit: cover;
+            height: auto; /* ပုံအလျားအလိုက် အပြည့်အစုံပေါ်စေရန် */
+            max-height: none;
+            object-fit: contain;
             border-radius: 6px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease;
-        }
-        .gallery-grid img:hover {
-            transform: scale(1.02);
+            border: 1px solid #e0e0e0;
+            display: block;
+            margin: 0 auto;
         }
 
         /* Clean Table Styling */
@@ -135,7 +136,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
-            table-layout: fixed; /* ကော်လံအကျယ်များကို စနစ်တကျ ထိန်းချုပ်ရန် */
+            table-layout: fixed;
         }
         th, td {
             border: 1px solid #e0e0e0;
@@ -205,14 +206,10 @@
             h1 {
                 font-size: 1.3em;
             }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
             th, td {
                 padding: 8px 6px;
                 font-size: 0.85em;
             }
-            /* ဖုန်းစခရင်ငယ်များအတွက် ကော်လံအကျယ် ချိန်ညှိမှု */
             th:nth-child(1), td:nth-child(1) { width: 15%; }
             th:nth-child(2), td:nth-child(2) { width: 55%; }
             th:nth-child(3), td:nth-child(3) { width: 30%; }
@@ -236,14 +233,24 @@
              <br>အများကောင်းမှု အလှူတော်ငွေကျပ် စုစုပေါင်း "နှစ်ရာနှစ်ဆယ့်ခြောက်သိန်း" လှူဒါန်းနိုင်ခဲ့ပါသည်။ </p>
         </div>
 
-        <!-- ပုံများထည့်သွင်းသည့်နေရာ (Photo Gallery) -->
+        <!-- Certificate ဓာတ်ပုံများ တပုံချင်း အပြည့်အစုံ ထည့်သွင်းသည့်နေရာ -->
         <div class="photo-gallery">
             <h3>📸 အလှူတော်မှတ်တမ်း ဓာတ်ပုံများ</h3>
-            <div class="gallery-grid">
-                <img src="ingyin1.jpg" alt="အလှူတော်ပုံ ၁">
-                <img src="ingyin2.jpg" alt="အလှူတော်ပုံ ၂">
-                <img src="ingyin3.jpg" alt="အလှူတော်ပုံ ၃">
-                <img src="ingyin4.jpg" alt="အလှူတော်ပုံ ၄">
+            
+            <div class="cert-container">
+                <img src="ingyin1.jpg" alt="အလှူတော်လက်မှတ် ပုံ ၁">
+            </div>
+            
+            <div class="cert-container">
+                <img src="ingyin2.jpg" alt="အလှူတော်လက်မှတ် ပုံ ၂">
+            </div>
+            
+            <div class="cert-container">
+                <img src="ingyin3.jpg" alt="အလှူတော်လက်မှတ် ပုံ ၃">
+            </div>
+            
+            <div class="cert-container">
+                <img src="ingyin4.jpg" alt="အလှူတော်လက်မှတ် ပုံ ၄">
             </div>
         </div>
 
