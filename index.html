@@ -65,41 +65,32 @@
             margin-bottom: 10px;
         }
         
-        /* Drop-down Box (Details/Summary) Styling */
-        details {
-            background-color: #fef9e7;
-            border: 1px solid #f39c12;
-            border-radius: 6px;
-            margin: 20px 0;
-            padding: 12px 15px;
-        }
-        summary {
-            font-weight: bold;
-            color: #d35400;
-            cursor: pointer;
-            font-size: 1.05em;
-            outline: none;
-            user-select: none;
-        }
-        summary:hover {
-            color: #a04000;
-        }
-        .dhamma-content {
-            margin-top: 15px;
-            border-top: 1px dashed #f39c12;
-            padding-top: 15px;
-            font-size: 0.95em;
-        }
-        .dhamma-content h4 {
-            color: #2c3e50;
-            margin: 10px 0 5px 0;
+        /* Photo Gallery Styling */
+        .photo-gallery {
+            margin: 25px 0;
             text-align: center;
         }
-        .dhamma-content ul {
-            padding-left: 20px;
+        .photo-gallery h3 {
+            color: #d35400;
+            margin-bottom: 15px;
+            font-size: 1.15em;
         }
-        .dhamma-content li {
-            margin-bottom: 10px;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.02);
         }
 
         /* Clean Table Styling */
@@ -144,14 +135,29 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            table-layout: fixed; /* ကော်လံအကျယ်များကို စနစ်တကျ ထိန်းချုပ်ရန် */
         }
         th, td {
             border: 1px solid #e0e0e0;
             padding: 10px 12px;
-            text-align: left;
             vertical-align: middle;
             font-size: 0.95em;
+            word-wrap: break-word;
         }
+        /* ကော်လံအကျယ်အဝန်းများ သတ်မှတ်ခြင်း */
+        th:nth-child(1), td:nth-child(1) {
+            width: 12%;
+            text-align: center;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 58%;
+            text-align: left;
+        }
+        th:nth-child(3), td:nth-child(3) {
+            width: 30%;
+            text-align: right;
+        }
+
         th {
             background-color: #d35400;
             color: #ffffff;
@@ -164,7 +170,6 @@
             background-color: #f5eeeb;
         }
         .amount {
-            text-align: right;
             font-weight: bold;
             color: #27ae60;
             white-space: nowrap;
@@ -176,27 +181,6 @@
         .total-row td {
             color: #d35400;
             font-size: 1em;
-        }
-
-        .contact-box {
-            background-color: #fdfefe;
-            border: 1px solid #d5d8dc;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 6px;
-        }
-        .contact-box h3 {
-            color: #2980b9;
-            margin-top: 0;
-            border-bottom: 2px solid #eaeded;
-            padding-bottom: 8px;
-        }
-        .contact-box ul {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-        .contact-box li {
-            margin-bottom: 8px;
         }
         .footer-blessing {
             text-align: center;
@@ -221,10 +205,17 @@
             h1 {
                 font-size: 1.3em;
             }
-            th, td {
-                padding: 8px;
-                font-size: 0.9em;
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
+            th, td {
+                padding: 8px 6px;
+                font-size: 0.85em;
+            }
+            /* ဖုန်းစခရင်ငယ်များအတွက် ကော်လံအကျယ် ချိန်ညှိမှု */
+            th:nth-child(1), td:nth-child(1) { width: 15%; }
+            th:nth-child(2), td:nth-child(2) { width: 55%; }
+            th:nth-child(3), td:nth-child(3) { width: 30%; }
         }
     </style>
 </head>
@@ -237,81 +228,90 @@
 
         <p class="blessing">✨ နတ်လူသာဓု ခေါ်စေသော်... ✨</p>
 
-        <p>ရန်ကုန်တိုင်းဒေသကြီး၊ လှည်းကူးမြို့နယ် <strong>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်</strong>၌ သီတင်းသုံးတော်မူကြသော သံဃာတော်များနှင့် သာမဏေများ ကျောင်းဝန်းအတွင်း၌ တနေရာမှ တနေရာသို့ လွယ်ကူ အဆင်ပြေစွာဖြင့် သက်တောင့်သက်သာ ကြွရောက် သွားလာနိုင်စေရန်အတွက် <strong>(မော်တော်ယာဉ်)</strong> လှူဒါန်း နိုင်ရန် စီစဉ်လျက်ရှိပါသည်။</p>
-
-        <p> "SNF YGN သာသနာပြုအဖွဲ့ တရားထောက်များနှင့် ယောဂီများ စုပေါင်းကောင်းမှု" အဖြစ် ရေစက်သွန်းချ လှူဒါန်းပါမည်။ </p>
+        <p>ရန်ကုန်တိုင်းဒေသကြီး၊ လှည်းကူးမြို့နယ် <strong>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက်</strong>၌ သီတင်းသုံးတော်မူကြသော သံဃာတော်များနှင့် သာမဏေများ ကျောင်းဝန်းအတွင်း၌ တနေရာမှ တနေရာသို့ လွယ်ကူ အဆင်ပြေစွာဖြင့် သက်တောင့်သက်သာ ကြွရောက် သွားလာနိုင်စေရန်အတွက် <strong>(မော်တော်ယာဉ်)</strong> ဝယ်ယူနိုင်ရန် ရည်မှန်း၍ လှူဒါန်းသော ယာဉ်အလှူတော် မှတ်တမ်း</p>
 
         <div class="highlight-box">
             <h3>🎉 သာသနာပြုလှူဒါန်းမှု သတင်းကောင်း</h3>
-            <p style="margin: 0; text-align: center;"> သာသနာ့ပျိုးဥယျာဉ် ကျောင်းတိုက် သို့ ပထမအကြိမ် အလှူ‌တော်ငွေ ကျပ် "သိန်းနှစ်ရာ" ကို    -  " 9 Oct 2026 "  နေ့တွင် လွှဲအပ် လှူဒါန်းခဲ့ပြီး ကျန်ရှိသော အလှူတော်ငွေ ကျပ် "နှစ်ဆယ့်နှစ်သိန်း" ကို - " 26 Oct 2026 " သီတင်းကျွတ်လပြည့်နေ့တွင် လွှဲအပ် လှူဒါန်းခဲ့ပါသည်။ အများကောင်းမှု အလှူတော်ငွေကျပ် စုစုပေါင်း "နှစ်ရာနှစ်ဆယ့်နှစ်သိန်း" လှူဒါန်းနိုင်ခဲ့ပါသည်။ </p>
+            <p style="margin: 0; text-align: center;">"SNF YGN သာသနာပြုအဖွဲ့ <br>တရားထောက်များနှင့် ယောဂီများ" <br> စုပေါင်းကောင်းမှု <br>သာသနာ့ပျိုးဥယျာဉ်ကျောင်းတိုက် သို့ <br> " 9 Nov 2026 " သီတင်းကျွတ်လကွယ်နေ့တွင်<br> ရေစက်သွန်းချ လှူဒါန်းခဲ့ပါသည်။
+             <br>အများကောင်းမှု အလှူတော်ငွေကျပ် စုစုပေါင်း "နှစ်ရာနှစ်ဆယ့်ခြောက်သိန်း" လှူဒါန်းနိုင်ခဲ့ပါသည်။ </p>
         </div>
 
-        
+        <!-- ပုံများထည့်သွင်းသည့်နေရာ (Photo Gallery) -->
+        <div class="photo-gallery">
+            <h3>📸 အလှူတော်မှတ်တမ်း ဓာတ်ပုံများ</h3>
+            <div class="gallery-grid">
+                <img src="ingyin1.jpg" alt="အလှူတော်ပုံ ၁">
+                <img src="ingyin2.jpg" alt="အလှူတော်ပုံ ၂">
+                <img src="ingyin3.jpg" alt="အလှူတော်ပုံ ၃">
+                <img src="ingyin4.jpg" alt="အလှူတော်ပုံ ၄">
+            </div>
+        </div>
 
         <!-- သန့်ရှင်းလှပသော အလှူရှင်မှတ်တမ်း ဇယား -->
         <div class="donation-card">
             <h2>အလှူရှင်မှတ်တမ်း</h2>
 
             <div class="summary-banner">
-                <p>စုစုပေါင်း လှူဒါန်းရရှိငွေ - <strong>၂၂,၄၀၀,၀၀၀ ကျပ်</strong></p>
-                <p>အလှူရှင် စုစုပေါင်း - <strong>၃၅ ဦး</strong></p>
+                <p>စုစုပေါင်း လှူဒါန်းရရှိငွေ - <strong>၂၂,၆၀၀,၀၀၀ ကျပ်</strong></p>
+                <p>အလှူရှင် စုစုပေါင်း - <strong>၃၈ ဦး</strong></p>
             </div>
 
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th style="width: 10%; text-align: center;">စဉ်</th>
-                            <th style="width: 60%;">အလှူရှင်အမည် / မိသားစု</th>
-                            <th style="width: 30%; text-align: right;">လှူဒါန်းငွေ (ကျပ်)</th>
+                            <th>စဉ်</th>
+                            <th>အလှူရှင်အမည် / မိသားစု</th>
+                            <th style="text-align: right;">လှူဒါန်းငွေ (ကျပ်)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td style="text-align: center;">၁</td><td>မိဘများအား အမှူးထား၍ ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု</td><td class="amount">၁၇,၀၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂</td><td>ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ</td><td class="amount">၁,၀၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၃</td><td>ဒေါ်နီနီလွင် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၄</td><td>ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင် (သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု၊ ဖြူးမြို့)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၅</td><td>နှစ်ဖက်မိဘများရည်စူး၍ တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု</td><td class="amount">၁၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၆</td><td>မိဘနှစ်ပါးအား အမှူးထား၍ ကိုဇော်လင်း + မအိအိလွင် (သား မောင်ကောင်းခန့်၊ သမီး မယွန်းရွှေရည်လင်း မိသားစု)</td><td class="amount">၅၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၇</td><td>ဒေါ်တင်တင်လှိုင် အမှူးထား၍ ဒေါ်ခင်မာဦး (ခင်မေဦး အထည်ဆိုင်၊ ကြည့်မြင်တိုင်ညဈေး မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၈</td><td>ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၉</td><td>မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍ ဒေါ်မို့မို့ မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၀</td><td>ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍ မဧပရယ်ဌေး မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၁</td><td>ဒေါ်နုနုခိုင် သမီး မကျော့ မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၂</td><td>ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၃</td><td>ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင် (သမီး မအိဇာနည်ဖြိုး၊ သား မောင်အားသစ်ဇာနည် မိသားစု၊ နေပြည်တော်)</td><td class="amount">၃၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၄</td><td>ဒေါ်သီသီလှိုင် မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၅</td><td>ကိုကျော်စွာ + မတင်တင်နွယ် (သား မောင်သီဟကျော်စွာ၊ မောင်ဆန်းထွဋ်ကျော်စွာ၊ မောင်အုပ်စိုးကမ္ဘာ မိသားစု၊ နေပြည်တော်)</td><td class="amount">၂၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၆</td><td>ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း (သမီး မဖြူဖြူခိုင်မင်း၊ သား မောင်လရောင်လင်း မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၇</td><td>မချောစုလှိုင် မိသားစု</td><td class="amount">၂၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၈</td><td>ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍ မကလျာဝင်း မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၁၉</td><td>(ဦးတင့်လွင်) + ဒေါ်ဌေးဌေးဝင်း (သမီး မသဲစုလွင်၊ သား မောင်ထွန်းအောင်ကျော် မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၀</td><td>မိဘများအား အမှူးထား၍ ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင် (သမီး မပွင့်ကြည်ဖြူ၊ သား မောင်ဟိန်းပြည့်နိုင် မိသားစု)</td><td class="amount">၅၇၅,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၁</td><td>ဒေါ်ဆွေဆွေမြင့် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၂</td><td>ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)</td><td class="amount">၃၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၃</td><td>ကိုသန့်ဇော်လင်း + မဝေမာ (သား မောင်သက်ပိုင်လင်း၊ သမီး မစံယွန်းမေ မိသားစု)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၄</td><td>ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍ သမီး မချို မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၅</td><td>ကိုထွန်းဝေ + မမေလွင်သော် (ထွန်းပြည့်လျှံ ဆောက်လုပ်ရေး ကုမ္ပဏီ မိသားစု)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၆</td><td>မိဘများအား ရည်စူး အမှူးထား၍ ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု</td><td class="amount">၆၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၇</td><td>ဒေါ်ခင်ထွေးဇင် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၈</td><td>ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၂၉</td><td>ကွယ်လွန်သူ မိဘများအား ရည်စူး၍ ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး မိသားစု (ဟင်္သာတမြို့)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၃၀</td><td>ကိုအောင်သူရကျော် + မသက်သက်ဇင်မြင့် မိသားစု (ရန်ကုန်မြို့)</td><td class="amount">၅၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၃၁</td><td>ဦးဝင်းမောင် + ဒေါ်ခင်အေး မိသားစု (ပျဉ်းမနားမြို့)</td><td class="amount">၆၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၃၂</td><td>ဦးညွန့်ဝင်း + ဒေါ်ရီ မိသားစု (ပျဉ်းမနားမြို့)</td><td class="amount">၁၅,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၃၃</td><td>ကွယ်လွန်သူ ဒေါ်စန်းကြည် အားရည်စူး၍ ဦးထွန်းညွန့် သမီး မကြည်ကြည်ဦး မိသားစု </td><td class="amount">၂၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၃၄</td><td>ဦးရွှေကို + ဒေါ်သီတာဝင်း သား မောင်ဂျွန်ဟမ်းစံ သမီး မနှိုင်းစံဝင့် မိသားစု  သင်္ဃန်းကျွန်းမြို့နယ်  </td><td class="amount">၁၀၀,၀၀၀</td></tr>
-                        <tr><td style="text-align: center;">၃၅</td><td>ဦးသန်းဇော် + Dr ဒေါ်ခင်ပြုံးရည် သား အောင်ကောင်းမြတ် သမီး ဆုရွှေရည်ဝင်း မိသားစု  </td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၁</td><td>မိဘများအား အမှူးထား၍ ကို Daniel Collins + မအင်ကြင်းလှမြင့် မိသားစု</td><td class="amount">၁၇,၀၀၀,၀၀၀</td></tr>
+                        <tr><td>၂</td><td>ဒေါ်လင်းလင်းလှိုင် ၊ ဒေါ်လျိုစီမင်း(ခ)ဒေါ်ကိန်းလန် ၊ ဒေါ်ပေါက်လန် မိသားစုများ</td><td class="amount">၁,၀၀၀,၀၀၀</td></tr>
+                        <tr><td>၃</td><td>ဒေါ်နီနီလွင် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၄</td><td>ဦးဟုတ်စိန် + ဒေါ်အေးအေးခိုင် (သမီး မသိမ့်သဉ္ဇာစိုး၊ မစမ်းစန္ဒာစိုး မိသားစု၊ ဖြူးမြို့)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၅</td><td>နှစ်ဖက်မိဘများရည်စူး၍ တရားလွှတ်တော်ရှေ့နေ ဦးသောင်းရွှေ + ဒေါ်အေးအေးသန်း မိသားစု</td><td class="amount">၁၀,၀၀၀</td></tr>
+                        <tr><td>၆</td><td>မိဘနှစ်ပါးအား အမှူးထား၍ ကိုဇော်လင်း + မအိအိလွင် (သား မောင်ကောင်းခန့်၊ သမီး မယွန်းရွှေရည်လင်း မိသားစု)</td><td class="amount">၅၀၀,၀၀၀</td></tr>
+                        <tr><td>၇</td><td>ဒေါ်တင်တင်လှိုင် အမှူးထား၍ ဒေါ်ခင်မာဦး (ခင်မေဦး အထည်ဆိုင်၊ ကြည့်မြင်တိုင်ညဈေး မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၈</td><td>ကိုလွှမ်းမိုးအောင် + မနော်မူး မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၉</td><td>မိခင်ကြီး ဒေါ်ထွေး အမှူးထား၍ ဒေါ်မို့မို့ မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၁၀</td><td>ကွယ်လွန်သူ မိဘနှစ်ပါး အား ရည်စူး၍ မဧပရယ်ဌေး မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၁၁</td><td>ဒေါ်နုနုခိုင် သမီး မကျော့ မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၁၂</td><td>ထူးလင်းယံ မိသားစု (စမ်းချောင်း)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၁၃</td><td>ဦးဇာနည်ဝင်းထွန်း + ဒေါ်ကျော့ကျော့ခိုင် (သမီး မအိဇာနည်ဖြိုး၊ သား မောင်အားသစ်ဇာနည် မိသားစု၊ နေပြည်တော်)</td><td class="amount">၃၀၀,၀၀၀</td></tr>
+                        <tr><td>၁၄</td><td>ဒေါ်သီသီလှိုင် မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၁၅</td><td>ကိုကျော်စွာ + မတင်တင်နွယ် (သား မောင်သီဟကျော်စွာ၊ မောင်ဆန်းထွဋ်ကျော်စွာ၊ မောင်အုပ်စိုးကမ္ဘာ မိသားစု၊ နေပြည်တော်)</td><td class="amount">၂၀၀,၀၀၀</td></tr>
+                        <tr><td>၁၆</td><td>ကိုစခိုင်မင်းဦး + မဖြူဖြူဝင်း (သမီး မဖြူဖြူခိုင်မင်း၊ သား မောင်လရောင်လင်း မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၁၇</td><td>မချောစုလှိုင် မိသားစု</td><td class="amount">၂၀,၀၀၀</td></tr>
+                        <tr><td>၁၈</td><td>ကွယ်လွန်သူ မောင်သုတစံ အားရည်စူး၍ မကလျာဝင်း မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၁၉</td><td>(ဦးတင့်လွင်) + ဒေါ်ဌေးဌေးဝင်း (သမီး မသဲစုလွင်၊ သား မောင်ထွန်းအောင်ကျော် မိသားစု)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၂၀</td><td>မိဘများအား အမှူးထား၍ ကိုသန်းဇော်ဦး + မမြင့်ကေခိုင် (သမီး မပွင့်ကြည်ဖြူ၊ သား မောင်ဟိန်းပြည့်နိုင် မိသားစု)</td><td class="amount">၅၇၅,၀၀၀</td></tr>
+                        <tr><td>၂၁</td><td>ဒေါ်ဆွေဆွေမြင့် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၂၂</td><td>ကိုအောင်မြတ်သူ + မအေးအေးမွန် မိသားစု (ရွှေဘိုမြို့)</td><td class="amount">၃၀၀,၀၀၀</td></tr>
+                        <tr><td>၂၃</td><td>ကိုသန့်ဇော်လင်း + မဝေမာ (သား မောင်သက်ပိုင်လင်း၊ သမီး မစံယွန်းမေ မိသားစု)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၂၄</td><td>ဖခင်ကြီး ဦးတင်အေး အမှူးထား၍ သမီး မချို မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၂၅</td><td>ကိုထွန်းဝေ + မမေလွင်သော် (ထွန်းပြည့်လျှံ ဆောက်လုပ်ရေး ကုမ္ပဏီ မိသားစု)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၂၆</td><td>မိဘများအား ရည်စူး အမှူးထား၍ ကိုဟိန်းသွင် ၊ ကိုသူရိန်စိုး မိသားစု</td><td class="amount">၆၀၀,၀၀၀</td></tr>
+                        <tr><td>၂၇</td><td>ဒေါ်ခင်ထွေးဇင် မိသားစု</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၂၈</td><td>ဒေါ်ယုယုခိုင် ၊ မအိမ့်ကြည်စင် မိသားစု</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၂၉</td><td>ကွယ်လွန်သူ မိဘများအား ရည်စူး၍ ဦးသက်နိုင် + ဒေါ်ရတနာဝင်းမင်းဦး မိသားစု (ဟင်္သာတမြို့)</td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၃၀</td><td>ကိုအောင်သူရကျော် + မသက်သက်ဇင်မြင့် မိသားစု (ရန်ကုန်မြို့)</td><td class="amount">၅၀,၀၀၀</td></tr>
+                        <tr><td>၃၁</td><td>ဦးဝင်းမောင် + ဒေါ်ခင်အေး မိသားစု (ပျဉ်းမနားမြို့)</td><td class="amount">၆၀,၀၀၀</td></tr>
+                        <tr><td>၃၂</td><td>ဦးညွန့်ဝင်း + ဒေါ်ရီ မိသားစု (ပျဉ်းမနားမြို့)</td><td class="amount">၁၅,၀၀၀</td></tr>
+                        <tr><td>၃၃</td><td>ကွယ်လွန်သူ ဒေါ်စန်းကြည် အားရည်စူး၍ ဦးထွန်းညွန့် သမီး မကြည်ကြည်ဦး မိသားစု </td><td class="amount">၂၀,၀၀၀</td></tr>
+                        <tr><td>၃၄</td><td>ဦးရွှေကို + ဒေါ်သီတာဝင်း သား မောင်ဂျွန်ဟမ်းစံ သမီး မနှိုင်းစံဝင့် မိသားစု  သင်္ဃန်းကျွန်းမြို့နယ်  </td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၃၅</td><td>ဦးသန်းဇော် + Dr ဒေါ်ခင်ပြုံးရည် သား အောင်ကောင်းမြတ် သမီး ဆုရွှေရည်ဝင်း မိသားစု  </td><td class="amount">၁၀၀,၀၀၀</td></tr>
+                        <tr><td>၃၆</td><td>ဒေါ်သန်းသန်းစိန် မိသားစု  </td><td class="amount">၃၅,၀၀၀</td></tr>
+                        <tr><td>၃၇</td><td>ဒေါ်မြမြမိုး မိသားစု  </td><td class="amount">၃၅,၀၀၀</td></tr>
+                        <tr><td>၃၈</td><td>အန်တီသန်း၊ သမီး-မစိန်စိန် မိသားစု  </td><td class="amount">၁၃၀,၀၀၀</td></tr>
                         <tr class="total-row">
                             <td colspan="2" style="text-align: right;">စုစုပေါင်း လှူဒါန်းရရှိငွေ</td>
-                            <td class="amount" style="text-align: right;">၂၂,၄၀၀,၀၀၀</td>
+                            <td class="amount" style="text-align: right;">၂၂,၆၀၀,၀၀၀</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-
-      
 
         <hr>
 
